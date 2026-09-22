@@ -1,0 +1,21 @@
+---
+interface Props {
+  class?: string;
+}
+const { class: className = '' } = Astro.props;
+---
+<svg 
+  class={`w-full max-w-lg mx-auto ${className}`} 
+  viewBox="0 0 400 20" 
+  fill="none" 
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+>
+  <path d="M 50 10 L 180 10" stroke="#C9A96E" stroke-width="1" />
+  <path d="M 220 10 L 350 10" stroke="#C9A96E" stroke-width="1" />
+  <path d="M 40 10 C 45 5, 45 15, 50 10 Z" fill="#C9A96E" />
+  <path d="M 360 10 C 355 5, 355 15, 350 10 Z" fill="#C9A96E" />
+  <!-- Center element -->
+  <rect x="195" y="5" width="10" height="10" transform="rotate(45 200 10)" fill="none" stroke="#C9A96E" stroke-width="1.5" />
+  <circle cx="200" cy="10" r="2" fill="#C9A96E" />
+</svg>

@@ -1,0 +1,91 @@
+---
+/**
+ * Hero.astro — Cinematic Invitation Cover
+ *
+ * FULL-SCREEN VIDEO VISUAL BACKGROUND
+ * HTML TEXT ON TOP
+ * SCROLL-CONTROLLED CINEMATIC ANIMATION
+ */
+---
+
+<div id="hero-scroll-container" class="relative w-full overflow-x-hidden" style="height: 600vh;">
+  <section id="hero" class="relative w-full h-[100svh] min-h-[100vh] overflow-hidden bg-[#1A1128]" aria-label="Wedding invitation cover">
+    
+    <!-- 1. VIDEO LAYER (z-0) -->
+    <div class="absolute inset-0 w-full h-full z-0">
+      <video
+        id="hero-video"
+        src="/video/invitation.mp4"
+        class="w-full h-full object-cover object-center block"
+        muted
+        playsinline
+        preload="metadata"
+        aria-hidden="true"
+        tabindex="-1"
+      ></video>
+    </div>
+
+    <!-- 2. DECORATIVE OVERLAYS (z-10) -->
+    <div class="absolute inset-0 z-10 bg-gradient-to-t from-[#1A1128]/70 via-[#1A1128]/20 to-[#1A1128]/40 pointer-events-none" aria-hidden="true"></div>
+
+    <!-- 3. TEXT / INVITATION CONTENT (z-20) -->
+    <div class="absolute inset-0 z-20 flex flex-col items-center justify-between py-[12vh] px-6 pointer-events-none text-center">
+      
+      <!-- Top Text: Bismillah -->
+      <div id="hero-text-top" class="w-full flex flex-col items-center opacity-0 translate-y-4">
+        <p class="font-arabic leading-loose mb-1 text-[#F5F0E8] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]" dir="rtl" lang="ar" style="font-size: clamp(1.5rem, 5vw, 2rem);">
+          بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+        </p>
+        <p class="text-[#F5F0E8]/90 text-[0.65rem] uppercase tracking-[0.3em] font-body mt-2 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+          The Wedding Of
+        </p>
+      </div>
+
+      <!-- Center: Empty space for video's wax seal -->
+      <div class="flex-1"></div>
+
+      <!-- Bottom Text: Names, Date -->
+      <div id="hero-text-bottom" class="w-full flex flex-col items-center opacity-0 translate-y-4">
+        <div class="flex flex-col items-center justify-center mb-6 drop-shadow-[0_4px_8px_rgba(0,0,0,0.6)]">
+          <h1 class="font-display leading-none text-[#C9A96E]" style="font-size: clamp(2.5rem, 8vw, 4.5rem);">Farheen Naaz</h1>
+          <div class="my-2 flex items-center justify-center gap-4">
+            <span class="block h-px bg-[#C9A96E]/60" style="width: clamp(2rem, 6vw, 4rem);"></span>
+            <span class="font-display italic text-[#C9A96E]" style="font-size: clamp(1.5rem, 5vw, 2.5rem);">&amp;</span>
+            <span class="block h-px bg-[#C9A96E]/60" style="width: clamp(2rem, 6vw, 4rem);"></span>
+          </div>
+          <h1 class="font-display leading-none text-[#C9A96E]" style="font-size: clamp(2.5rem, 8vw, 4.5rem);">Sk Abdul Wasim</h1>
+        </div>
+        <p class="font-body uppercase tracking-[0.4em] font-semibold text-[#F5F0E8] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] mb-8" style="font-size: clamp(0.7rem, 2.5vw, 0.9rem);">
+          27 December 2026
+        </p>
+      </div>
+    </div>
+
+    <!-- 4. TAP TO OPEN BUTTON (z-30) -->
+    <!-- Positioned precisely over the video's central wax seal -->
+    <div id="tap-overlay" class="absolute inset-0 z-30 flex flex-col items-center justify-center transition-all duration-700 pointer-events-none">
+      <div
+        id="tap-btn"
+        class="group relative w-40 h-40 rounded-full cursor-pointer outline-none bg-transparent pointer-events-auto flex items-center justify-center"
+        role="button"
+        tabindex="0"
+        aria-label="Open wedding invitation"
+      >
+        <!-- Subtle pulsing rings that surround the physical seal in the video -->
+        <span class="absolute inset-0 rounded-full border border-[#C9A96E]/30 animate-ping" style="animation-duration: 3s;"></span>
+        <span class="absolute inset-[-10px] rounded-full border border-[#C9A96E]/10 animate-ping" style="animation-duration: 4s; animation-delay: 1.5s;"></span>
+      </div>
+      
+      <!-- Instructional text right below the seal -->
+      <p class="absolute mt-[12rem] text-[#C9A96E] text-[0.65rem] uppercase tracking-[0.5em] font-body font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] pointer-events-none">
+        Tap Seal to Open
+      </p>
+    </div>
+
+  </section>
+</div>
+
+<script>
+  import { initHeroCinematic } from '../../scripts/hero-cinematic';
+  initHeroCinematic();
+</script>

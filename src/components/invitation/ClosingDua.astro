@@ -1,0 +1,228 @@
+---
+/**
+ * ClosingDua.astro — Closing blessing section
+ *
+ * Art direction: deep plum background (#2A1F3D), floating petals and
+ * butterflies, central gold octagonal frame, Arabic dua in large font,
+ * English translation, monogram, family name, and replay invitation link.
+ */
+---
+
+<section
+  id="closing-dua"
+  class="relative section-padding text-center overflow-hidden"
+  aria-label="Closing dua and blessing"
+  style="background-color: #2A1F3D;"
+>
+
+  <!-- ── Floating petals (6) ── -->
+  <div class="petal absolute pointer-events-none" aria-hidden="true" style="top: 5%; left: 8%; opacity: 0.28; animation-delay: 0s;">
+    <svg width="20" height="28" viewBox="0 0 20 28" fill="none" style="transform: rotate(-30deg);">
+      <path d="M10 1 C14 4 19 11 19 17 C19 23 14 27 10 27 C6 27 1 23 1 17 C1 11 6 4 10 1 Z" fill="#9B87C0"/>
+    </svg>
+  </div>
+  <div class="petal absolute pointer-events-none" aria-hidden="true" style="top: 15%; right: 6%; opacity: 0.22; animation-delay: 2s;">
+    <svg width="16" height="22" viewBox="0 0 16 22" fill="none" style="transform: rotate(45deg);">
+      <path d="M8 1 C12 3 15 9 15 13 C15 18 12 21 8 21 C4 21 1 18 1 13 C1 9 4 3 8 1 Z" fill="#C8B8E8"/>
+    </svg>
+  </div>
+  <div class="petal absolute pointer-events-none" aria-hidden="true" style="top: 40%; left: 4%; opacity: 0.2; animation-delay: 5s;">
+    <svg width="22" height="15" viewBox="0 0 22 15" fill="none" style="transform: rotate(-15deg);">
+      <path d="M11 1 C16 1 21 5 21 7.5 C21 10 16 14 11 14 C6 14 1 10 1 7.5 C1 5 6 1 11 1 Z" fill="#9B87C0"/>
+    </svg>
+  </div>
+  <div class="petal absolute pointer-events-none" aria-hidden="true" style="bottom: 30%; right: 7%; opacity: 0.25; animation-delay: 3s;">
+    <svg width="18" height="25" viewBox="0 0 18 25" fill="none" style="transform: rotate(60deg);">
+      <path d="M9 1 C13 4 17 10 17 15 C17 20 13 24 9 24 C5 24 1 20 1 15 C1 10 5 4 9 1 Z" fill="#C8B8E8"/>
+    </svg>
+  </div>
+  <div class="petal absolute pointer-events-none" aria-hidden="true" style="bottom: 16%; left: 10%; opacity: 0.2; animation-delay: 8s;">
+    <svg width="14" height="20" viewBox="0 0 14 20" fill="none" style="transform: rotate(-50deg);">
+      <path d="M7 1 C11 4 13 9 13 13 C13 17 11 19 7 19 C3 19 1 17 1 13 C1 9 3 4 7 1 Z" fill="#9B87C0"/>
+    </svg>
+  </div>
+  <div class="petal absolute pointer-events-none" aria-hidden="true" style="bottom: 8%; right: 12%; opacity: 0.18; animation-delay: 11s;">
+    <svg width="19" height="13" viewBox="0 0 19 13" fill="none" style="transform: rotate(20deg);">
+      <path d="M9.5 1 C14 1 18 5 18 6.5 C18 8 14 12 9.5 12 C5 12 1 8 1 6.5 C1 5 5 1 9.5 1 Z" fill="#C8B8E8"/>
+    </svg>
+  </div>
+
+  <!-- ── Butterflies (2) ── -->
+  <!-- Butterfly 1 -->
+  <div
+    class="butterfly absolute pointer-events-none"
+    aria-hidden="true"
+    style="top: 8%; right: 10%; opacity: 0.35; animation-delay: 1s;"
+  >
+    <svg width="34" height="26" viewBox="0 0 36 28" fill="none">
+      <path d="M18 14 C18 14 6 2 2 6 C-2 10 8 18 18 14Z" fill="#9B87C0" opacity="0.65"/>
+      <path d="M18 14 C18 14 30 2 34 6 C38 10 28 18 18 14Z" fill="#9B87C0" opacity="0.65"/>
+      <path d="M18 14 C18 14 8 22 4 20 C0 18 10 12 18 14Z" fill="#C8B8E8" opacity="0.45"/>
+      <path d="M18 14 C18 14 28 22 32 20 C36 18 26 12 18 14Z" fill="#C8B8E8" opacity="0.45"/>
+    </svg>
+  </div>
+  <!-- Butterfly 2 -->
+  <div
+    class="butterfly absolute pointer-events-none"
+    aria-hidden="true"
+    style="bottom: 12%; left: 7%; opacity: 0.3; animation-delay: 4s; animation-direction: reverse;"
+  >
+    <svg width="28" height="22" viewBox="0 0 36 28" fill="none">
+      <path d="M18 14 C18 14 6 2 2 6 C-2 10 8 18 18 14Z" fill="#C9A96E" opacity="0.5"/>
+      <path d="M18 14 C18 14 30 2 34 6 C38 10 28 18 18 14Z" fill="#C9A96E" opacity="0.5"/>
+      <path d="M18 14 C18 14 8 22 4 20 C0 18 10 12 18 14Z" fill="#D4B98A" opacity="0.35"/>
+      <path d="M18 14 C18 14 28 22 32 20 C36 18 26 12 18 14Z" fill="#D4B98A" opacity="0.35"/>
+    </svg>
+  </div>
+
+  <!-- ── Central ornamental octagonal gold frame ── -->
+  <div class="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true" data-parallax="0.06">
+    <svg
+      viewBox="0 0 320 320"
+      class="w-full max-w-xs h-auto opacity-[0.12]"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <!-- Outer octagon -->
+      <polygon
+        points="100,10 220,10 310,100 310,220 220,310 100,310 10,220 10,100"
+        stroke="#C9A96E"
+        stroke-width="1.5"
+        fill="none"
+      />
+      <!-- Inner octagon -->
+      <polygon
+        points="110,25 210,25 295,110 295,210 210,295 110,295 25,210 25,110"
+        stroke="#C9A96E"
+        stroke-width="0.7"
+        fill="none"
+        opacity="0.6"
+      />
+      <!-- Corner rosettes -->
+      <circle cx="100" cy="10" r="4" fill="#C9A96E" opacity="0.6"/>
+      <circle cx="220" cy="10" r="4" fill="#C9A96E" opacity="0.6"/>
+      <circle cx="310" cy="100" r="4" fill="#C9A96E" opacity="0.6"/>
+      <circle cx="310" cy="220" r="4" fill="#C9A96E" opacity="0.6"/>
+      <circle cx="220" cy="310" r="4" fill="#C9A96E" opacity="0.6"/>
+      <circle cx="100" cy="310" r="4" fill="#C9A96E" opacity="0.6"/>
+      <circle cx="10" cy="220" r="4" fill="#C9A96E" opacity="0.6"/>
+      <circle cx="10" cy="100" r="4" fill="#C9A96E" opacity="0.6"/>
+      <!-- Central star -->
+      <path d="M160 130 L164 154 L188 158 L164 162 L160 186 L156 162 L132 158 L156 154 Z" fill="#C9A96E" opacity="0.4"/>
+    </svg>
+  </div>
+
+  <!-- ── Content ── -->
+  <div class="relative z-10 w-full">
+
+    <!-- Arabic dua -->
+    <div class="mb-5" data-reveal>
+      <p
+        class="font-arabic text-gold leading-loose"
+        dir="rtl"
+        lang="ar"
+        style="font-size: clamp(1.1rem, 3.5vw, 1.6rem); color: #C9A96E; line-height: 2;"
+        aria-label="Wedding dua in Arabic"
+      >
+        بَارَكَ ٱللَّهُ لَكَ وَبَارَكَ عَلَيْكَ<br/>
+        وَجَمَعَ بَيْنَكُمَا فِي خَيْر
+      </p>
+    </div>
+
+    <!-- English translation -->
+    <div class="mb-8" data-reveal>
+      <p
+        class="font-display italic"
+        style="font-size: clamp(0.78rem, 2.5vw, 0.95rem); color: #F0E6CC; opacity: 0.85; line-height: 1.8;"
+      >
+        "May Allah bless you, and shower His blessings upon you,<br/>
+        and join you together in goodness."
+      </p>
+    </div>
+
+    <!-- Gold ornamental divider -->
+    <div class="mb-8 flex items-center justify-center gap-3" aria-hidden="true" data-reveal>
+      <span class="block h-px" style="width: clamp(2rem, 8vw, 4rem); background: rgba(201,169,110,0.45);"></span>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 1 L11.4 8.6 L19 10 L11.4 11.4 L10 19 L8.6 11.4 L1 10 L8.6 8.6 Z" fill="#C9A96E" opacity="0.8"/>
+      </svg>
+      <span class="block h-px" style="width: clamp(2rem, 8vw, 4rem); background: rgba(201,169,110,0.45);"></span>
+    </div>
+
+    <!-- Couple monogram -->
+    <div class="flex items-center justify-center mb-8" aria-hidden="true" data-reveal>
+      <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Octagonal monogram frame -->
+        <polygon
+          points="22,4 50,4 68,22 68,50 50,68 22,68 4,50 4,22"
+          stroke="#C9A96E"
+          stroke-width="1"
+          fill="none"
+          opacity="0.5"
+        />
+        <polygon
+          points="25,8 47,8 64,25 64,47 47,64 25,64 8,47 8,25"
+          stroke="#C9A96E"
+          stroke-width="0.5"
+          fill="none"
+          opacity="0.3"
+        />
+        <text
+          x="36"
+          y="41"
+          text-anchor="middle"
+          font-family="'Playfair Display', Georgia, serif"
+          font-size="16"
+          fill="#C9A96E"
+          opacity="0.85"
+        >B &amp; G</text>
+      </svg>
+    </div>
+
+    <!-- With love and duas -->
+    <div data-reveal>
+      <p
+        class="font-body uppercase tracking-[0.4em] mb-3"
+        style="font-size: clamp(0.58rem, 2vw, 0.68rem); color: #C8B8E8;"
+      >
+        With love and duas
+      </p>
+      <p
+        class="font-display"
+        style="font-size: clamp(1rem, 3.5vw, 1.3rem); color: #F0E6CC; opacity: 0.9;"
+      >
+        <!-- PLACEHOLDER: Replace with actual family name -->
+        THE_FAMILY_NAME Family
+      </p>
+    </div>
+
+    <!-- Replay invitation link -->
+    <div class="mt-10" data-reveal>
+      <button
+        id="replay-btn"
+        type="button"
+        class="inline-flex items-center justify-center gap-2 font-body text-[0.6rem] uppercase tracking-[0.3em] transition-opacity duration-300 hover:opacity-70 cursor-pointer bg-transparent border-0"
+        style="color: rgba(200,184,232,0.5);"
+        aria-label="Replay the wedding invitation from the beginning"
+      >
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="M11 6 A5 5 0 1 1 6 1" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none"/>
+          <path d="M6 1 L8 3 L6 5" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none"/>
+        </svg>
+        Replay Invitation
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  var replayBtn = document.getElementById('replay-btn');
+  if (replayBtn) {
+    replayBtn.addEventListener('click', function () {
+      try { sessionStorage.clear(); } catch (e) {}
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(function () { window.location.reload(); }, 400);
+    });
+  }
+</script>

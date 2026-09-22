@@ -1,0 +1,370 @@
+@import "tailwindcss";
+
+/* ============================================
+   DESIGN TOKENS — Tailwind v4 @theme
+   ============================================ */
+
+@theme {
+  /* — Core Palette — */
+  --color-ivory: #FAF7F0;
+  --color-parchment: #F5F0E8;
+  --color-cream: #F0EBE0;
+
+  /* — Lavender Garden — */
+  --color-lavender: #EDE8F5;
+  --color-lavender-mid: #D5CCEB;
+  --color-lavender-deep: #9B87C0;
+  --color-plum: #4A3060;
+  --color-lilac: #C8B8E8;
+  --color-lilac-soft: #E8DEFF;
+
+  /* — Gold — */
+  --color-gold: #C9A96E;
+  --color-gold-light: #D4B98A;
+  --color-gold-dark: #A88B5A;
+  --color-champagne: #F0E6CC;
+
+  /* — Neutral — */
+  --color-charcoal: #2D2926;
+  --color-charcoal-light: #4A4541;
+  --color-charcoal-muted: #6B6560;
+  --color-navy: #1B2A4A;
+  --color-emerald: #1B4332;
+  --color-emerald-light: #2D6A4F;
+
+  /* — Typography — */
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-arabic: 'Noto Naskh Arabic', 'Traditional Arabic', serif;
+
+  /* — Spacing — */
+  --spacing-section: clamp(5rem, 12vw, 9rem);
+  --spacing-section-sm: clamp(3rem, 7vw, 5rem);
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+/* Disable CSS smooth scroll when Lenis is active */
+html.has-motion, html.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-charcoal);
+  background-color: var(--color-plum);  /* Rich plum for desktop bg */
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   CARD COMPOSITION — 9:16 vertical invitation
+   Mobile: full bleed
+   Desktop: centered vertical card
+   ============================================ */
+
+.card-composition {
+  position: relative;
+  background-color: var(--color-ivory);
+  width: 100%;
+  min-height: 100dvh;
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: radial-gradient(ellipse at center, #6B5A8A 0%, #2A1F3D 60%, #1A1128 100%);
+    min-height: 100dvh;
+    margin: 0;
+  }
+
+  .card-composition {
+    width: calc(100dvh * 9 / 16);
+    max-width: 600px;
+    min-width: 400px;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    box-shadow: 0 30px 120px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,169,110,0.2);
+  }
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--color-charcoal);
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* ============================================
+   FOUC PREVENTION
+   ============================================ */
+
+html.has-motion [data-reveal] {
+  visibility: hidden;
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html.has-motion [data-reveal] {
+    visibility: visible !important;
+  }
+}
+
+/* ============================================
+   SELECTION
+   ============================================ */
+
+::selection {
+  background-color: var(--color-lavender-deep);
+  color: var(--color-ivory);
+}
+
+/* ============================================
+   FOCUS STATES
+   ============================================ */
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ============================================
+   SVG LINE DRAWING (CSS-native, no DrawSVG)
+   ============================================ */
+
+[data-draw] {
+  stroke-dasharray: var(--path-length, 1200);
+  stroke-dashoffset: var(--path-length, 1200);
+}
+
+html.has-motion [data-draw].is-drawn {
+  animation: draw-line 1.6s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+
+html:not(.has-motion) [data-draw] {
+  stroke-dasharray: none;
+  stroke-dashoffset: 0;
+}
+
+@keyframes draw-line {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ============================================
+   SCROLL INDICATOR
+   ============================================ */
+
+@keyframes gentle-pulse {
+  0%, 100% { opacity: 0.5; transform: translateY(0); }
+  50% { opacity: 0.9; transform: translateY(8px); }
+}
+
+.scroll-indicator {
+  animation: gentle-pulse 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-indicator { animation: none; opacity: 0.7; }
+}
+
+/* ============================================
+   COUNTDOWN — tabular numbers
+   ============================================ */
+
+.countdown-digit {
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-display);
+}
+
+/* ============================================
+   BUTTERFLY ANIMATION
+   ============================================ */
+
+@keyframes butterfly-float {
+  0%   { transform: translate(0, 0) rotate(-5deg); }
+  25%  { transform: translate(6px, -8px) rotate(2deg); }
+  50%  { transform: translate(12px, -4px) rotate(-3deg); }
+  75%  { transform: translate(6px, -12px) rotate(4deg); }
+  100% { transform: translate(0, 0) rotate(-5deg); }
+}
+
+@keyframes petal-drift {
+  0%   { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+  10%  { opacity: 0.7; }
+  90%  { opacity: 0.5; }
+  100% { transform: translate(-20px, 120px) rotate(180deg); opacity: 0; }
+}
+
+.butterfly {
+  animation: butterfly-float 8s ease-in-out infinite;
+}
+
+.petal {
+  animation: petal-drift 12s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .butterfly, .petal { animation: none; }
+}
+
+/* ============================================
+   VIDEO — cinematic scroll container
+   ============================================ */
+
+.cinematic-video-section {
+  position: relative;
+  width: 100%;
+  /* Height set by JS scroll distance — see CinematicOpening.astro */
+}
+
+.cinematic-video-sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.cinematic-video-el {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  /* Prevent blue flash on video load */
+  background-color: #1A1128;
+}
+
+/* Poster shows when video is not yet loaded */
+.cinematic-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: opacity 0.4s ease;
+}
+
+/* ============================================
+   SECTION ORNAMENTS — shared pattern
+   ============================================ */
+
+.section-ornament {
+  position: absolute;
+  pointer-events: none;
+  aria-hidden: true;
+}
+
+/* ============================================
+   ELEGANT INPUTS — RSVP
+   ============================================ */
+
+.invite-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.4);
+  padding: 0.75rem 0;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-charcoal);
+  letter-spacing: 0.05em;
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+.invite-input:focus {
+  border-bottom-color: var(--color-lavender-deep);
+}
+
+.invite-input::placeholder {
+  color: var(--color-charcoal-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+.invite-input:user-valid {
+  border-bottom-color: var(--color-gold);
+}
+
+.invite-input:user-invalid {
+  border-bottom-color: #c0392b;
+}
+
+/* ============================================
+   CUSTOM UTILITIES
+   ============================================ */
+
+@utility section-padding {
+  padding-block: var(--spacing-section);
+  padding-inline: clamp(1.5rem, 6vw, 3rem);
+}
+
+@utility section-padding-sm {
+  padding-block: var(--spacing-section-sm);
+  padding-inline: clamp(1.5rem, 6vw, 3rem);
+}
+
+@utility container-narrow {
+  max-width: 44rem;
+  margin-inline: auto;
+}
+
+@utility ornament-border {
+  border: 1px solid rgba(201, 169, 110, 0.3);
+  box-shadow: inset 0 0 0 4px rgba(201, 169, 110, 0.08);
+}

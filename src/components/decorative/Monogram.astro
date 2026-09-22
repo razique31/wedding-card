@@ -1,0 +1,46 @@
+---
+interface Props {
+  bride?: string;
+  groom?: string;
+  class?: string;
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const { 
+  bride = 'B', 
+  groom = 'G', 
+  class: className = '',
+  size = 'md'
+} = Astro.props;
+
+const sizeMap = {
+  sm: 'w-12 h-12 text-lg',
+  md: 'w-20 h-20 text-2xl',
+  lg: 'w-32 h-32 text-4xl'
+};
+---
+<div class={`relative flex items-center justify-center font-display text-[#C9A96E] ${sizeMap[size]} ${className}`}>
+  <svg 
+    class="absolute inset-0 w-full h-full pointer-events-none" 
+    viewBox="0 0 100 100" 
+    fill="none" 
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <path 
+      d="M 30 5 L 70 5 L 95 30 L 95 70 L 70 95 L 30 95 L 5 70 L 5 30 Z" 
+      stroke="#C9A96E" 
+      stroke-width="2" 
+    />
+    <path 
+      d="M 32 8 L 68 8 L 92 32 L 92 68 L 68 92 L 32 92 L 8 68 L 8 32 Z" 
+      stroke="#C9A96E" 
+      stroke-width="0.5" 
+    />
+  </svg>
+  <div class="flex flex-col items-center justify-center leading-none mt-1">
+    <span>{bride}</span>
+    <span class="text-[0.5em] my-0.5">&amp;</span>
+    <span>{groom}</span>
+  </div>
+</div>

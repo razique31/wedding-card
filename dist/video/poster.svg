@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bg" x1="540" y1="0" x2="540" y2="1920" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1A1128"/>
+      <stop offset="35%" stop-color="#2A1F3D"/>
+      <stop offset="70%" stop-color="#4A3060"/>
+      <stop offset="100%" stop-color="#2A1F3D"/>
+    </linearGradient>
+
+    <!-- Central glow -->
+    <radialGradient id="glow" cx="540" cy="960" r="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#C9A96E" stop-opacity="0.18"/>
+      <stop offset="50%" stop-color="#9B87C0" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#1A1128" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Seal gradient -->
+    <radialGradient id="seal-grad" cx="540" cy="1000" r="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#C8B8E8"/>
+      <stop offset="60%" stop-color="#9B87C0"/>
+      <stop offset="100%" stop-color="#4A3060"/>
+    </radialGradient>
+
+    <!-- Jaali pattern tile -->
+    <pattern id="jaali" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+      <rect x="15" y="15" width="30" height="30" fill="none" stroke="#C9A96E" stroke-width="0.4" transform="rotate(45 30 30)" opacity="0.5"/>
+      <rect x="15" y="15" width="30" height="30" fill="none" stroke="#C9A96E" stroke-width="0.3" opacity="0.3"/>
+      <circle cx="30" cy="30" r="2" fill="#C9A96E" opacity="0.15"/>
+    </pattern>
+
+    <!-- Filter: soft glow -->
+    <filter id="soft-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1920" fill="url(#bg)"/>
+  
+  <!-- Central glow -->
+  <rect width="1080" height="1920" fill="url(#glow)"/>
+
+  <!-- Jaali pattern overlay -->
+  <rect width="1080" height="1920" fill="url(#jaali)" opacity="0.05"/>
+
+  <!-- Outer envelope frame lines -->
+  <rect x="60" y="80" width="960" height="1760" stroke="#C9A96E" stroke-width="1" fill="none" opacity="0.25"/>
+  <rect x="80" y="100" width="920" height="1720" stroke="#C9A96E" stroke-width="0.5" fill="none" opacity="0.15"/>
+
+  <!-- Mughal arch — large, central -->
+  <path 
+    d="M200 1800 L200 860 Q200 500 540 220 Q880 500 880 860 L880 1800"
+    stroke="#C9A96E"
+    stroke-width="1.8"
+    fill="none"
+    opacity="0.35"
+    filter="url(#soft-glow)"
+  />
+  <!-- Inner arch -->
+  <path 
+    d="M260 1800 L260 875 Q260 535 540 280 Q820 535 820 875 L820 1800"
+    stroke="#C9A96E"
+    stroke-width="0.8"
+    fill="none"
+    opacity="0.18"
+  />
+
+  <!-- Arch keystone ornament -->
+  <path d="M540 215 L525 185 L540 165 L555 185 Z" fill="#C9A96E" opacity="0.6"/>
+  <circle cx="540" cy="160" r="12" fill="none" stroke="#C9A96E" stroke-width="1" opacity="0.5"/>
+  <circle cx="540" cy="160" r="6" fill="#C9A96E" opacity="0.35"/>
+
+  <!-- Wax seal -->
+  <!-- Outer ring -->
+  <circle cx="540" cy="1000" r="120" fill="url(#seal-grad)" opacity="0.9"/>
+  <circle cx="540" cy="1000" r="116" fill="none" stroke="#C9A96E" stroke-width="1.5" opacity="0.7"/>
+  <circle cx="540" cy="1000" r="95" fill="none" stroke="#F5F0E8" stroke-width="0.6" opacity="0.4"/>
+  <!-- Seal scallop border (8 points) -->
+  <path 
+    d="M540 876 C560 890 580 876 595 888 C610 876 626 890 636 908 C650 916 664 910 672 924 
+       C688 930 690 946 696 960 C704 976 718 978 720 994 C718 1010 704 1012 696 1028 
+       C690 1042 688 1058 672 1064 C664 1078 650 1072 636 1080 C626 1098 610 1102 595 1090 
+       C580 1102 560 1088 540 1102 C520 1088 500 1102 485 1090 C470 1102 454 1098 444 1080 
+       C430 1072 416 1078 408 1064 C392 1058 390 1042 384 1028 C376 1012 362 1010 360 994 
+       C362 978 376 976 384 960 C390 946 392 930 408 924 C416 910 430 916 444 908 
+       C454 890 470 876 485 888 C500 876 520 890 540 876 Z"
+    fill="#9B87C0"
+    opacity="0.2"
+  />
+
+  <!-- Bismillah in seal area -->
+  <text 
+    x="540" y="985" 
+    text-anchor="middle" 
+    font-family="'Noto Naskh Arabic', 'Traditional Arabic', serif" 
+    font-size="52" 
+    fill="#F5F0E8" 
+    opacity="0.9"
+    letter-spacing="2"
+  >بِسْمِ ٱللَّٰهِ</text>
+  <text 
+    x="540" y="1035" 
+    text-anchor="middle" 
+    font-family="'Noto Naskh Arabic', 'Traditional Arabic', serif" 
+    font-size="38" 
+    fill="#F5F0E8" 
+    opacity="0.6"
+    letter-spacing="1"
+  >ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</text>
+
+  <!-- Floating petals -->
+  <!-- Petal 1 -->
+  <ellipse cx="180" cy="640" rx="24" ry="38" fill="#9B87C0" opacity="0.35" transform="rotate(25, 180, 640)" filter="url(#soft-glow)"/>
+  <!-- Petal 2 -->
+  <ellipse cx="900" cy="500" rx="18" ry="28" fill="#C8B8E8" opacity="0.3" transform="rotate(-40, 900, 500)"/>
+  <!-- Petal 3 -->
+  <ellipse cx="160" cy="1300" rx="20" ry="32" fill="#9B87C0" opacity="0.25" transform="rotate(15, 160, 1300)"/>
+  <!-- Petal 4 -->
+  <ellipse cx="920" cy="1400" rx="16" ry="24" fill="#C8B8E8" opacity="0.28" transform="rotate(-20, 920, 1400)"/>
+  <!-- Petal 5 -->
+  <ellipse cx="440" cy="350" rx="12" ry="20" fill="#C9A96E" opacity="0.2" transform="rotate(35, 440, 350)"/>
+
+  <!-- Corner ornaments -->
+  <!-- Top-left -->
+  <path d="M60 80 Q140 80 140 160" stroke="#C9A96E" stroke-width="0.8" fill="none" opacity="0.3"/>
+  <circle cx="60" cy="80" r="6" fill="none" stroke="#C9A96E" stroke-width="0.8" opacity="0.4"/>
+  <circle cx="60" cy="80" r="2.5" fill="#C9A96E" opacity="0.3"/>
+  <!-- Top-right -->
+  <path d="M1020 80 Q940 80 940 160" stroke="#C9A96E" stroke-width="0.8" fill="none" opacity="0.3"/>
+  <circle cx="1020" cy="80" r="6" fill="none" stroke="#C9A96E" stroke-width="0.8" opacity="0.4"/>
+  <circle cx="1020" cy="80" r="2.5" fill="#C9A96E" opacity="0.3"/>
+  <!-- Bottom-left -->
+  <path d="M60 1840 Q140 1840 140 1760" stroke="#C9A96E" stroke-width="0.8" fill="none" opacity="0.3"/>
+  <circle cx="60" cy="1840" r="6" fill="none" stroke="#C9A96E" stroke-width="0.8" opacity="0.4"/>
+  <!-- Bottom-right -->
+  <path d="M1020 1840 Q940 1840 940 1760" stroke="#C9A96E" stroke-width="0.8" fill="none" opacity="0.3"/>
+  <circle cx="1020" cy="1840" r="6" fill="none" stroke="#C9A96E" stroke-width="0.8" opacity="0.4"/>
+
+  <!-- Bottom text area -->
+  <text x="540" y="1680" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="60" fill="#C9A96E" opacity="0.8" letter-spacing="4">BRIDE_NAME</text>
+  <line x1="340" y1="1710" x2="740" y2="1710" stroke="#C9A96E" stroke-width="0.6" opacity="0.3"/>
+  <text x="540" y="1745" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="36" fill="#C9A96E" opacity="0.5" font-style="italic">&amp;</text>
+  <line x1="340" y1="1760" x2="740" y2="1760" stroke="#C9A96E" stroke-width="0.6" opacity="0.3"/>
+  <text x="540" y="1800" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="60" fill="#C9A96E" opacity="0.8" letter-spacing="4">GROOM_NAME</text>
+
+  <!-- Date -->
+  <text x="540" y="1860" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="28" fill="#E8DEFF" opacity="0.45" letter-spacing="6">27 DECEMBER 2026</text>
+</svg>

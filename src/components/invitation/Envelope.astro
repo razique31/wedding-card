@@ -1,0 +1,162 @@
+---
+/**
+ * Envelope.astro — The landing experience
+ * 
+ * Static-first: works without JavaScript.
+ * The skip link navigates directly to #invitation.
+ * JS enhances with the opening animation (Phase 4).
+ */
+
+import Monogram from '../decorative/Monogram.astro';
+---
+
+<section
+  id="envelope"
+  class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#0a0a0a] overflow-hidden"
+  aria-label="Wedding invitation envelope"
+>
+  <!-- Rich cinematic lighting: Spotlight effect in the center -->
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(201,169,110,0.15)_0%,rgba(10,10,10,1)_100%)]" aria-hidden="true"></div>
+
+  <!-- Subtle background pattern overlay -->
+  <div class="absolute inset-0 opacity-[0.03] mix-blend-screen" aria-hidden="true">
+    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="env-pattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+          <rect x="15" y="15" width="30" height="30" fill="none" stroke="#C9A96E" stroke-width="0.5" transform="rotate(45 30 30)" />
+          <rect x="15" y="15" width="30" height="30" fill="none" stroke="#C9A96E" stroke-width="0.5" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#env-pattern)" />
+    </svg>
+  </div>
+
+  <!-- Envelope body -->
+  <div
+    id="envelope-body"
+    class="relative w-[min(90vw,700px)] aspect-[4/3] mx-auto shadow-2xl"
+    style="perspective: 1200px;"
+  >
+    <!-- Envelope back panel -->
+    <div class="absolute inset-0 rounded-sm bg-parchment border border-gold/20 overflow-hidden">
+      <!-- Inner ornamental border -->
+      <div class="absolute inset-4 border border-gold/30 rounded-sm" aria-hidden="true"></div>
+      <div class="absolute inset-6 border border-gold/10 rounded-sm" aria-hidden="true"></div>
+      
+      <!-- Inner card preview (visible when flap opens) -->
+      <div
+        id="envelope-card"
+        class="absolute inset-6 flex flex-col items-center justify-center text-center bg-ivory rounded-sm border border-gold/20 p-4"
+      >
+        <!-- Small monogram on inner card -->
+        <div class="mb-4" aria-hidden="true">
+          <Monogram size="sm" />
+        </div>
+        <p class="text-[0.65rem] uppercase tracking-[0.3em] text-charcoal-muted font-body">
+          Wedding Celebration
+        </p>
+      </div>
+    </div>
+
+    <!-- Envelope flap (top) -->
+    <div
+      id="envelope-flap"
+      class="absolute inset-x-0 top-0 z-10 origin-top"
+      style="transform-style: preserve-3d;"
+    >
+      <svg
+        viewBox="0 0 400 200"
+        class="w-full"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <!-- Flap shape — triangular/trapezoidal -->
+        <path
+          d="M0 0 L400 0 L400 10 L200 190 L0 10 Z"
+          fill="#F5F0E8"
+          stroke="#C9A96E"
+          stroke-width="0.5"
+          stroke-opacity="0.3"
+        />
+        <!-- Inner decorative line on flap -->
+        <path
+          d="M20 8 L200 170 L380 8"
+          fill="none"
+          stroke="#C9A96E"
+          stroke-width="0.3"
+          stroke-opacity="0.2"
+        />
+      </svg>
+    </div>
+
+    <!-- Wax seal — positioned over the flap tip -->
+    <div
+      id="envelope-seal"
+      class="absolute left-1/2 -translate-x-1/2 z-20"
+      style="top: 42%;"
+      aria-hidden="true"
+    >
+      <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <!-- Seal base circle -->
+        <circle cx="32" cy="32" r="28" fill="#C9A96E" opacity="0.9" />
+        <circle cx="32" cy="32" r="26" fill="none" stroke="#A88B5A" stroke-width="1" />
+        <!-- Inner circle -->
+        <circle cx="32" cy="32" r="20" fill="none" stroke="#F5F0E8" stroke-width="0.5" opacity="0.6" />
+        <!-- Ornamental seal edge — 8 scallops -->
+        <path
+          d="M32 2 C36 8, 40 4, 44 8 C48 4, 52 8, 56 12 C60 16, 56 20, 60 24 C56 28, 60 32, 60 36 C60 40, 56 36, 56 44 C56 48, 52 52, 48 56 C44 60, 40 56, 36 60 C32 56, 28 60, 24 56 C20 60, 16 56, 12 52 C8 48, 4 44, 8 40 C4 36, 8 32, 4 28 C8 24, 4 20, 8 16 C12 12, 16 8, 20 8 C24 4, 28 8, 32 2 Z"
+          fill="#C9A96E"
+          opacity="0.15"
+        />
+        <!-- Monogram initials in seal -->
+        <text x="32" y="37" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#F5F0E8" font-weight="bold" letter-spacing="2">
+          B&G
+        </text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Couple names preview below envelope -->
+  <div class="mt-8 text-center">
+    <p class="text-gold/60 text-[0.65rem] uppercase tracking-[0.4em] font-body">
+      The Wedding of
+    </p>
+    <p class="text-gold text-lg font-display mt-1 tracking-wide">
+      <!-- PLACEHOLDER: Replace with actual couple names -->
+      BRIDE_NAME &amp; GROOM_NAME
+    </p>
+  </div>
+
+  <!-- Open Invitation button -->
+  <button
+    id="open-invitation-btn"
+    class="mt-12 relative z-50 group cursor-pointer pointer-events-auto"
+    aria-label="Open the wedding invitation"
+    type="button"
+  >
+    <span class="flex items-center gap-4 text-gold/90 text-sm uppercase tracking-[0.4em] font-body transition-colors duration-300 hover:text-gold hover:scale-105 transform">
+      <span class="inline-block w-8 h-[2px] bg-gold/60 transition-all duration-300 group-hover:w-12 group-hover:bg-gold" aria-hidden="true"></span>
+      Open Invitation
+      <span class="inline-block w-8 h-[2px] bg-gold/60 transition-all duration-300 group-hover:w-12 group-hover:bg-gold" aria-hidden="true"></span>
+    </span>
+  </button>
+
+  <!-- Skip animation link — always accessible -->
+  <a
+    href="#invitation"
+    id="skip-envelope"
+    class="mt-4 text-gold/30 text-[0.6rem] uppercase tracking-[0.2em] hover:text-gold/60 transition-colors duration-300 focus-visible:text-gold/60"
+    aria-label="Skip envelope animation and go directly to the invitation"
+  >
+    Skip to invitation
+  </a>
+</section>
+
+<!-- Envelope animation — imports GSAP-powered animation with all fallbacks -->
+<script>
+  import { initEnvelope } from '../../scripts/envelope-animation';
+  
+  // Initialize envelope on DOM ready
+  initEnvelope();
+</script>

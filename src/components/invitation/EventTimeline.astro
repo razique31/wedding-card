@@ -1,0 +1,83 @@
+---
+/**
+ * EventTimeline.astro — Vertical wedding event timeline
+ * 
+ * Geometric markers + gold connecting line.
+ * No arch framing. Clean vertical rhythm.
+ * All event data is placeholder.
+ */
+
+import OrnamentalDivider from '../decorative/OrnamentalDivider.astro';
+
+// PLACEHOLDER: Replace with actual event data
+const events = [
+  {
+    name: 'Nikah Ceremony',
+    time: 'TIME_PLACEHOLDER',
+    venue: 'VENUE_PLACEHOLDER',
+    description: 'The sacred marriage ceremony',
+  },
+  {
+    name: 'Walima Reception',
+    time: 'TIME_PLACEHOLDER',
+    venue: 'VENUE_PLACEHOLDER',
+    description: 'The wedding reception and feast',
+  },
+  {
+    name: 'Dinner',
+    time: 'TIME_PLACEHOLDER',
+    venue: 'VENUE_PLACEHOLDER',
+    description: 'Celebratory dinner with family and friends',
+  },
+];
+---
+
+<section
+  id="events"
+  class="section-padding text-center"
+  aria-label="Wedding events timeline"
+>
+  <div class="w-full px-8">
+    <!-- Section heading -->
+    <h2 class="text-emerald text-xs uppercase tracking-[0.4em] mb-2 font-body font-medium" data-reveal>
+      Wedding Events
+    </h2>
+    <div class="mb-14" data-reveal>
+      <OrnamentalDivider />
+    </div>
+
+    <!-- Timeline -->
+    <div class="relative max-w-sm mx-auto">
+      <!-- Events -->
+      <div class="flex flex-col gap-16 relative">
+        {events.map((event, index) => (
+          <div
+            class="relative w-full max-w-sm mx-auto bg-parchment rounded-sm shadow-md border border-gold/20 p-8 text-center"
+            style={`z-index: ${10 + index}; margin-top: ${index > 0 ? '-3rem' : '0'};`}
+            data-reveal
+            data-parallax={0.02 + index * 0.02}
+          >
+            <!-- Decorative top anchor -->
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 bg-ivory border border-gold/30 rounded-full flex items-center justify-center">
+              <div class="w-2 h-2 bg-gold/50 rounded-full"></div>
+            </div>
+
+            <!-- Event content -->
+            <h3 class="font-display text-2xl md:text-3xl text-emerald mb-2 mt-2">
+              {event.name}
+            </h3>
+            <p class="text-charcoal-muted text-xs uppercase tracking-[0.25em] mb-4 pb-4 border-b border-gold/20">
+              {event.description}
+            </p>
+            <p class="text-charcoal text-sm font-medium mt-4">
+              {event.time}
+            </p>
+            <p class="text-charcoal-light text-sm mt-1">
+              {event.venue}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

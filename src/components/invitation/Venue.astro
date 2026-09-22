@@ -1,0 +1,168 @@
+---
+/**
+ * Venue.astro — Venue information section
+ *
+ * Art direction: ivory background with marble texture SVG veining,
+ * decorative Mughal arch frame outline, parchment venue card with
+ * ornamental corners and directions link.
+ */
+---
+
+<section
+  id="venue"
+  class="relative section-padding overflow-hidden"
+  aria-label="Wedding venue information"
+  style="background-color: #FAF7F0;"
+>
+
+  <!-- ── Marble texture SVG (subtle gold/grey veining) ── -->
+  <div class="absolute inset-0 pointer-events-none opacity-[0.04]" aria-hidden="true" data-parallax="0.05">
+    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <filter id="venue-marble">
+          <feTurbulence type="turbulence" baseFrequency="0.012 0.008" numOctaves="5" seed="12" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="18" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </defs>
+      <!-- Horizontal veining lines, displaced by turbulence to create marble -->
+      <g filter="url(#venue-marble)" opacity="0.6">
+        <line x1="0" y1="15%" x2="100%" y2="18%" stroke="#C9A96E" stroke-width="0.5"/>
+        <line x1="0" y1="32%" x2="100%" y2="30%" stroke="#A8A09B" stroke-width="0.4"/>
+        <line x1="0" y1="50%" x2="100%" y2="53%" stroke="#C9A96E" stroke-width="0.3"/>
+        <line x1="0" y1="67%" x2="100%" y2="65%" stroke="#A8A09B" stroke-width="0.4"/>
+        <line x1="0" y1="82%" x2="100%" y2="85%" stroke="#C9A96E" stroke-width="0.5"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- ── Decorative Mughal arch outline frame (decorative only, not containing content) ── -->
+  <div
+    class="absolute inset-0 flex items-start justify-center pt-8 pointer-events-none"
+    aria-hidden="true"
+    data-parallax="0.04"
+  >
+    <svg
+      viewBox="0 0 380 300"
+      class="w-full h-auto opacity-[0.07]"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <!-- Wide decorative arch outline — purely ornamental frame -->
+      <path
+        d="M10 300 L10 160 Q10 80 80 45 Q150 12 190 4 Q230 12 300 45 Q370 80 370 160 L370 300"
+        stroke="#C9A96E"
+        stroke-width="1.5"
+        fill="none"
+      />
+      <path
+        d="M25 300 L25 164 Q25 90 92 58 Q158 26 190 20 Q222 26 288 58 Q355 90 355 164 L355 300"
+        stroke="#C9A96E"
+        stroke-width="0.6"
+        fill="none"
+        opacity="0.6"
+      />
+      <!-- Keystone -->
+      <path d="M190 4 L186 -5 L190 -12 L194 -5 Z" fill="#C9A96E"/>
+    </svg>
+  </div>
+
+  <!-- ── Content ── -->
+  <div class="relative z-10 w-full text-center">
+
+    <!-- Section label -->
+    <p class="text-[0.62rem] uppercase tracking-[0.4em] font-body font-medium mb-2" style="color: #9B87C0;" data-reveal>
+      Where to Find Us
+    </p>
+
+    <!-- Section heading -->
+    <h2
+      class="font-display text-charcoal mb-3"
+      style="font-size: clamp(1.6rem, 5vw, 2.4rem);"
+      data-reveal
+    >
+      The Venue
+    </h2>
+
+    <!-- Gold ornamental divider -->
+    <div class="mb-10 flex items-center justify-center gap-3" aria-hidden="true" data-reveal>
+      <span class="block h-px bg-gold/40" style="width: clamp(2rem, 8vw, 4rem);"></span>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 1 L11.4 8.6 L19 10 L11.4 11.4 L10 19 L8.6 11.4 L1 10 L8.6 8.6 Z" fill="#C9A96E" opacity="0.75"/>
+      </svg>
+      <span class="block h-px bg-gold/40" style="width: clamp(2rem, 8vw, 4rem);"></span>
+    </div>
+
+    <!-- Venue card -->
+    <div class="relative ornament-border bg-parchment/80 p-8 rounded-sm" data-reveal>
+
+      <!-- Corner ornaments on the venue card -->
+      <!-- Top-left -->
+      <svg class="absolute top-3 left-3 pointer-events-none" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M2 22 L2 4 Q2 2 4 2 L22 2" stroke="#C9A96E" stroke-width="1" opacity="0.5"/>
+        <circle cx="2" cy="2" r="2" fill="#C9A96E" opacity="0.4"/>
+      </svg>
+      <!-- Top-right -->
+      <svg class="absolute top-3 right-3 pointer-events-none" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="transform: scaleX(-1);">
+        <path d="M2 22 L2 4 Q2 2 4 2 L22 2" stroke="#C9A96E" stroke-width="1" opacity="0.5"/>
+        <circle cx="2" cy="2" r="2" fill="#C9A96E" opacity="0.4"/>
+      </svg>
+      <!-- Bottom-left -->
+      <svg class="absolute bottom-3 left-3 pointer-events-none" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="transform: scaleY(-1);">
+        <path d="M2 22 L2 4 Q2 2 4 2 L22 2" stroke="#C9A96E" stroke-width="1" opacity="0.5"/>
+        <circle cx="2" cy="2" r="2" fill="#C9A96E" opacity="0.4"/>
+      </svg>
+      <!-- Bottom-right -->
+      <svg class="absolute bottom-3 right-3 pointer-events-none" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="transform: scale(-1);">
+        <path d="M2 22 L2 4 Q2 2 4 2 L22 2" stroke="#C9A96E" stroke-width="1" opacity="0.5"/>
+        <circle cx="2" cy="2" r="2" fill="#C9A96E" opacity="0.4"/>
+      </svg>
+
+      <!-- Venue name -->
+      <h3
+        class="font-display mb-3"
+        style="font-size: clamp(1.2rem, 4vw, 1.6rem); color: #4A3060;"
+      >
+        <!-- PLACEHOLDER: Replace with actual venue name -->
+        VENUE_NAME
+      </h3>
+
+      <!-- Address -->
+      <address class="not-italic font-body text-charcoal-muted leading-relaxed mb-4" style="font-size: clamp(0.78rem, 2.5vw, 0.875rem);">
+        <!-- PLACEHOLDER: Replace with actual venue address -->
+        VENUE_ADDRESS_LINE_1<br/>
+        VENUE_ADDRESS_LINE_2<br/>
+        VENUE_CITY, STATE PIN
+      </address>
+
+      <!-- Date/Time -->
+      <p class="font-body text-gold mb-6" style="font-size: clamp(0.72rem, 2.2vw, 0.82rem); letter-spacing: 0.2em;">
+        <!-- PLACEHOLDER: Replace with actual date and time -->
+        27 December 2026 · TIME_PLACEHOLDER
+      </p>
+
+      <!-- Horizontal gold divider -->
+      <div class="flex items-center gap-3 mb-6" aria-hidden="true">
+        <span class="flex-1 block h-px bg-gold/25"></span>
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <circle cx="6" cy="6" r="3" fill="#C9A96E" opacity="0.5"/>
+        </svg>
+        <span class="flex-1 block h-px bg-gold/25"></span>
+      </div>
+
+      <!-- Get Directions button -->
+      <a
+        href="https://maps.google.com/?q=VENUE_ADDRESS"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-2 px-6 py-3 border border-gold/50 text-gold font-body text-[0.65rem] uppercase tracking-[0.25em] transition-colors duration-300"
+        aria-label="Get directions to the wedding venue"
+      >
+        Get Directions
+        <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true">
+          <path d="M1 5 L11 5 M7 1 L11 5 L7 9" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>

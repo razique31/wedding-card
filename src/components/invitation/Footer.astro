@@ -1,0 +1,93 @@
+---
+/**
+ * Footer.astro — Minimal elegant close
+ *
+ * Art direction: near-black dark plum background, thin gold SVG ornamental
+ * top border, centered monogram, date line, crafted with love phrase.
+ * No real names — those are in the sections above.
+ */
+---
+
+<footer
+  id="footer"
+  class="relative text-center overflow-hidden"
+  aria-label="Wedding invitation footer"
+  style="background-color: #1A1128; padding-block: clamp(2.5rem, 8vw, 4rem); padding-inline: clamp(1.5rem, 6vw, 3rem);"
+>
+
+  <!-- ── Gold ornamental top border SVG ── -->
+  <div class="w-full pointer-events-none mb-8" aria-hidden="true">
+    <svg
+      viewBox="0 0 380 20"
+      class="w-full h-auto"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <!-- Main continuous border line -->
+      <line x1="0" y1="10" x2="380" y2="10" stroke="#C9A96E" stroke-width="0.6" opacity="0.35"/>
+      <!-- Repeating small diamond ornaments along the line -->
+      <g opacity="0.5">
+        <!-- Left group -->
+        <path d="M30 10 L34 6 L38 10 L34 14 Z" fill="#C9A96E" opacity="0.4"/>
+        <path d="M60 10 L62 7 L64 10 L62 13 Z" fill="#C9A96E" opacity="0.3"/>
+        <path d="M90 10 L94 6 L98 10 L94 14 Z" fill="#C9A96E" opacity="0.4"/>
+        <path d="M120 10 L122 7 L124 10 L122 13 Z" fill="#C9A96E" opacity="0.3"/>
+        <path d="M150 10 L154 6 L158 10 L154 14 Z" fill="#C9A96E" opacity="0.4"/>
+        <!-- Center star -->
+        <path d="M190 10 L192.5 4 L195 10 L192.5 16 Z" fill="#C9A96E" opacity="0.6"/>
+        <circle cx="190" cy="10" r="2.5" fill="#C9A96E" opacity="0.3"/>
+        <!-- Right group (mirrored) -->
+        <path d="M222 10 L226 6 L230 10 L226 14 Z" fill="#C9A96E" opacity="0.4"/>
+        <path d="M256 10 L258 7 L260 10 L258 13 Z" fill="#C9A96E" opacity="0.3"/>
+        <path d="M282 10 L286 6 L290 10 L286 14 Z" fill="#C9A96E" opacity="0.4"/>
+        <path d="M316 10 L318 7 L320 10 L318 13 Z" fill="#C9A96E" opacity="0.3"/>
+        <path d="M342 10 L346 6 L350 10 L346 14 Z" fill="#C9A96E" opacity="0.4"/>
+      </g>
+      <!-- Secondary inner border line -->
+      <line x1="0" y1="14" x2="380" y2="14" stroke="#C9A96E" stroke-width="0.3" opacity="0.15"/>
+    </svg>
+  </div>
+
+  <!-- ── Centered monogram ── -->
+  <div class="flex justify-center mb-5" aria-hidden="true">
+    <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="28" cy="28" r="26" stroke="#C9A96E" stroke-width="0.8" opacity="0.4"/>
+      <circle cx="28" cy="28" r="20" stroke="#C9A96E" stroke-width="0.4" opacity="0.25"/>
+      <text
+        x="28"
+        y="33"
+        text-anchor="middle"
+        font-family="'Playfair Display', Georgia, serif"
+        font-size="13"
+        fill="#C9A96E"
+        opacity="0.7"
+      >B &amp; G</text>
+    </svg>
+  </div>
+
+  <!-- ── Date ── -->
+  <p
+    class="font-body uppercase tracking-[0.35em] mb-3"
+    style="font-size: clamp(0.6rem, 2vw, 0.7rem); color: rgba(201,169,110,0.6);"
+  >
+    27 December 2026
+  </p>
+
+  <!-- ── Closing phrase ── -->
+  <p
+    class="font-display italic"
+    style="font-size: clamp(0.8rem, 2.5vw, 0.95rem); color: rgba(200,184,232,0.45);"
+  >
+    Crafted with love
+  </p>
+
+  <!-- ── Bottom micro-ornament ── -->
+  <div class="mt-6 flex items-center justify-center gap-2" aria-hidden="true">
+    <span class="block h-px bg-gold/15" style="width: 2rem;"></span>
+    <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+      <path d="M4 0.5 L4.8 3.2 L7.5 4 L4.8 4.8 L4 7.5 L3.2 4.8 L0.5 4 L3.2 3.2 Z" fill="#C9A96E" opacity="0.3"/>
+    </svg>
+    <span class="block h-px bg-gold/15" style="width: 2rem;"></span>
+  </div>
+
+</footer>

@@ -1,0 +1,36 @@
+---
+interface Props {
+  class?: string;
+  variant?: 'large' | 'portrait';
+}
+
+const { class: className = '', variant = 'large' } = Astro.props;
+---
+<div class={`relative ${variant === 'large' ? 'w-full' : 'max-w-md mx-auto aspect-[3/4]'} ${className}`}>
+  <svg 
+    class="absolute inset-0 w-full h-full pointer-events-none" 
+    preserveAspectRatio="none"
+    viewBox="0 0 100 100" 
+    fill="none" 
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <path 
+      d="M 5 95 L 5 40 C 5 20, 25 15, 50 5 C 75 15, 95 20, 95 40 L 95 95 Z" 
+      stroke="#C9A96E" 
+      stroke-width="1" 
+      vector-effect="non-scaling-stroke"
+    />
+    <!-- Apex ornament -->
+    <path 
+      d="M 50 5 C 48 3, 52 3, 50 5" 
+      fill="#C9A96E" 
+      stroke="#C9A96E" 
+      stroke-width="0.5" 
+      vector-effect="non-scaling-stroke" 
+    />
+  </svg>
+  <div class="relative z-10 w-full h-full">
+    <slot />
+  </div>
+</div>

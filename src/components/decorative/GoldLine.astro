@@ -1,0 +1,21 @@
+---
+interface Props {
+  class?: string;
+  variant?: 'simple' | 'ornate';
+}
+
+const { class: className = '', variant = 'simple' } = Astro.props;
+---
+<div class={`flex items-center justify-center w-full ${className}`} aria-hidden="true">
+  {variant === 'simple' ? (
+    <div class="h-[1px] w-full bg-gradient-to-r from-transparent via-[#C9A96E] to-transparent"></div>
+  ) : (
+    <div class="flex items-center w-full">
+      <div class="h-[1px] w-full bg-gradient-to-r from-transparent to-[#C9A96E]"></div>
+      <svg class="mx-2 shrink-0" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="2" width="6" height="6" transform="rotate(45 8 2)" fill="#C9A96E" />
+      </svg>
+      <div class="h-[1px] w-full bg-gradient-to-l from-transparent to-[#C9A96E]"></div>
+    </div>
+  )}
+</div>

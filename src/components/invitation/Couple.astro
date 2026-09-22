@@ -1,0 +1,276 @@
+---
+/**
+ * Couple.astro — Editorial couple introduction section
+ *
+ * Art direction: ivory background, jaali SVG pattern overlay, arch-framed
+ * portrait placeholders, monogram between portraits, lavender butterflies.
+ * Stacked vertically on mobile (never side by side).
+ */
+---
+
+<section
+  id="couple"
+  class="relative section-padding text-center overflow-hidden"
+  aria-label="About the couple"
+  style="background-color: #FAF7F0;"
+>
+
+  <!-- Jaali SVG pattern overlay (extremely subtle) -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true" data-parallax="0.04">
+    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" opacity="0.03" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <pattern id="couple-jaali" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse">
+          <!-- Octagonal jaali cell -->
+          <polygon points="14,0 34,0 48,14 48,34 34,48 14,48 0,34 0,14" fill="none" stroke="#4A3060" stroke-width="0.5"/>
+          <circle cx="24" cy="24" r="4" fill="none" stroke="#4A3060" stroke-width="0.4"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#couple-jaali)"/>
+    </svg>
+  </div>
+
+  <!-- Lavender butterfly 1 (near top of section) -->
+  <div
+    class="butterfly absolute pointer-events-none"
+    aria-hidden="true"
+    style="top: 6%; right: 8%; opacity: 0.45;"
+  >
+    <svg width="36" height="28" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M18 14 C18 14 6 2 2 6 C-2 10 8 18 18 14Z" fill="#9B87C0" opacity="0.7"/>
+      <path d="M18 14 C18 14 30 2 34 6 C38 10 28 18 18 14Z" fill="#9B87C0" opacity="0.7"/>
+      <path d="M18 14 C18 14 8 22 4 20 C0 18 10 12 18 14Z" fill="#C8B8E8" opacity="0.5"/>
+      <path d="M18 14 C18 14 28 22 32 20 C36 18 26 12 18 14Z" fill="#C8B8E8" opacity="0.5"/>
+      <line x1="18" y1="10" x2="18" y2="20" stroke="#4A3060" stroke-width="0.5" opacity="0.4"/>
+    </svg>
+  </div>
+
+  <!-- Lavender butterfly 2 (near bottom of section) -->
+  <div
+    class="butterfly absolute pointer-events-none"
+    aria-hidden="true"
+    style="bottom: 8%; left: 6%; opacity: 0.4; animation-delay: 3s; animation-direction: reverse;"
+  >
+    <svg width="30" height="24" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M18 14 C18 14 6 2 2 6 C-2 10 8 18 18 14Z" fill="#9B87C0" opacity="0.6"/>
+      <path d="M18 14 C18 14 30 2 34 6 C38 10 28 18 18 14Z" fill="#9B87C0" opacity="0.6"/>
+      <path d="M18 14 C18 14 8 22 4 20 C0 18 10 12 18 14Z" fill="#C8B8E8" opacity="0.4"/>
+      <path d="M18 14 C18 14 28 22 32 20 C36 18 26 12 18 14Z" fill="#C8B8E8" opacity="0.4"/>
+      <line x1="18" y1="10" x2="18" y2="20" stroke="#4A3060" stroke-width="0.5" opacity="0.4"/>
+    </svg>
+  </div>
+
+  <div class="relative z-10 w-full">
+
+    <!-- Section label -->
+    <p class="text-[0.62rem] uppercase tracking-[0.4em] font-body font-medium mb-2" style="color: #9B87C0;" data-reveal>
+      The Couple
+    </p>
+
+    <!-- Section heading -->
+    <h2
+      class="font-display italic text-charcoal mb-3"
+      style="font-size: clamp(1.6rem, 5vw, 2.4rem);"
+      data-reveal
+    >
+      Two Hearts, One Journey
+    </h2>
+
+    <!-- Ornamental divider -->
+    <div class="mb-12 flex items-center justify-center gap-3" aria-hidden="true" data-reveal>
+      <span class="block h-px bg-gold/40" style="width: clamp(2rem, 8vw, 4rem);"></span>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 1 L11.4 8.6 L19 10 L11.4 11.4 L10 19 L8.6 11.4 L1 10 L8.6 8.6 Z" fill="#C9A96E" opacity="0.75"/>
+      </svg>
+      <span class="block h-px bg-gold/40" style="width: clamp(2rem, 8vw, 4rem);"></span>
+    </div>
+
+    <!-- Portrait cards — stacked vertically (always, per spec) -->
+    <div class="flex flex-col items-center gap-14 w-full">
+
+      <!-- ── Bride card ── -->
+      <article class="w-full ornament-border bg-parchment/70 p-8 rounded-sm" data-reveal>
+
+        <!-- Arch-shaped portrait placeholder -->
+        <div
+          class="relative w-44 h-60 mx-auto mb-6"
+          aria-label="Bride portrait placeholder"
+        >
+          <!-- Arch clip-path frame -->
+          <div
+            class="w-full h-full overflow-hidden"
+            style="clip-path: polygon(0% 32%, 4% 18%, 13% 8%, 27% 2%, 50% 0%, 73% 2%, 87% 8%, 96% 18%, 100% 32%, 100% 100%, 0% 100%); background: #F5F0E8;"
+          >
+            <!-- SVG floral placeholder inside arch -->
+            <svg class="w-full h-full" viewBox="0 0 176 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="176" height="240" fill="#F5F0E8"/>
+              <!-- Background gradient wash -->
+              <ellipse cx="88" cy="120" rx="70" ry="90" fill="#EDE8F5" opacity="0.5"/>
+              <!-- Floral central motif -->
+              <circle cx="88" cy="115" r="28" fill="none" stroke="#9B87C0" stroke-width="0.8" opacity="0.4"/>
+              <circle cx="88" cy="115" r="18" fill="none" stroke="#C9A96E" stroke-width="0.6" opacity="0.35"/>
+              <circle cx="88" cy="115" r="6" fill="#9B87C0" opacity="0.25"/>
+              <!-- Petals -->
+              <ellipse cx="88" cy="85" rx="8" ry="14" fill="#9B87C0" opacity="0.2" transform="rotate(0 88 115)"/>
+              <ellipse cx="88" cy="85" rx="8" ry="14" fill="#9B87C0" opacity="0.2" transform="rotate(45 88 115)"/>
+              <ellipse cx="88" cy="85" rx="8" ry="14" fill="#9B87C0" opacity="0.2" transform="rotate(90 88 115)"/>
+              <ellipse cx="88" cy="85" rx="8" ry="14" fill="#9B87C0" opacity="0.2" transform="rotate(135 88 115)"/>
+              <ellipse cx="88" cy="85" rx="8" ry="14" fill="#C8B8E8" opacity="0.18" transform="rotate(22 88 115)"/>
+              <ellipse cx="88" cy="85" rx="8" ry="14" fill="#C8B8E8" opacity="0.18" transform="rotate(67 88 115)"/>
+              <ellipse cx="88" cy="85" rx="8" ry="14" fill="#C8B8E8" opacity="0.18" transform="rotate(112 88 115)"/>
+              <ellipse cx="88" cy="85" rx="8" ry="14" fill="#C8B8E8" opacity="0.18" transform="rotate(157 88 115)"/>
+              <!-- Small decorative text hint -->
+              <text x="88" y="185" text-anchor="middle" font-size="9" fill="#9B87C0" opacity="0.4" font-family="serif">BRIDE PHOTO</text>
+            </svg>
+            <!--
+              PLACEHOLDER: Replace SVG with actual bride photo:
+              <img src="/images/bride.webp" alt="BRIDE_NAME" width="176" height="240"
+                   class="w-full h-full object-cover object-top" loading="lazy" decoding="async"/>
+            -->
+          </div>
+          <!-- Gold arch border overlay SVG -->
+          <svg
+            class="absolute inset-0 w-full h-full pointer-events-none"
+            viewBox="0 0 176 240"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M2 90 C2 50 24 20 50 8 Q88 -4 138 8 C162 20 174 50 174 90 L174 238 L2 238 Z"
+              stroke="#C9A96E"
+              stroke-width="1"
+              fill="none"
+              opacity="0.4"
+            />
+          </svg>
+        </div>
+
+        <!-- Bride info -->
+        <p class="text-[0.62rem] uppercase tracking-[0.3em] text-charcoal-muted font-body mb-1">
+          The Bride
+        </p>
+        <h3 class="font-display text-charcoal mb-1" style="font-size: clamp(1.4rem, 5vw, 1.8rem);">
+          <!-- PLACEHOLDER: Replace with actual bride name -->
+          Farheen Naaz
+        </h3>
+        <!-- Optional Arabic name placeholder -->
+        <p class="font-arabic text-charcoal-muted mb-3" dir="rtl" lang="ar" style="font-size: 1rem; opacity: 0.55;">
+          <!-- PLACEHOLDER: Arabic bride name -->
+         فرحين ناز
+        </p>
+        <p class="text-[0.65rem] uppercase tracking-[0.2em] text-charcoal-light mb-4 font-body">
+          <!-- PLACEHOLDER: Replace with actual parents' names -->
+          Daughter of BRIDE_FATHER &amp; BRIDE_MOTHER
+        </p>
+
+        <!-- Gold ornamental divider -->
+        <div class="flex items-center justify-center gap-2 mb-4" aria-hidden="true">
+          <span class="block h-px bg-gold/35" style="width: 2.5rem;"></span>
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="3" fill="#C9A96E" opacity="0.6"/></svg>
+          <span class="block h-px bg-gold/35" style="width: 2.5rem;"></span>
+        </div>
+
+        <p class="text-charcoal-muted leading-relaxed" style="font-size: clamp(0.78rem, 2.5vw, 0.875rem);">
+          <!-- PLACEHOLDER: Replace with bride description -->
+          A brief, heartfelt introduction to the bride — her grace, her spirit, and what makes her extraordinary.
+        </p>
+      </article>
+
+      <!-- ── Couple monogram between cards ── -->
+      <div class="flex flex-col items-center gap-2" aria-hidden="true">
+        <div class="flex items-center justify-center gap-3">
+          <span class="block h-px bg-gold/30" style="width: 2rem;"></span>
+          <div class="relative w-14 h-14 flex items-center justify-center">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="28" cy="28" r="26" stroke="#C9A96E" stroke-width="0.8" opacity="0.4"/>
+              <circle cx="28" cy="28" r="21" stroke="#C9A96E" stroke-width="0.4" opacity="0.25"/>
+              <text x="28" y="33" text-anchor="middle" font-family="'Playfair Display', serif" font-size="14" fill="#C9A96E" opacity="0.8">B &amp; G</text>
+            </svg>
+          </div>
+          <span class="block h-px bg-gold/30" style="width: 2rem;"></span>
+        </div>
+      </div>
+
+      <!-- ── Groom card ── -->
+      <article class="w-full ornament-border bg-parchment/70 p-8 rounded-sm" data-reveal>
+
+        <!-- Arch-shaped portrait placeholder -->
+        <div
+          class="relative w-44 h-60 mx-auto mb-6"
+          aria-label="Groom portrait placeholder"
+        >
+          <div
+            class="w-full h-full overflow-hidden"
+            style="clip-path: polygon(0% 32%, 4% 18%, 13% 8%, 27% 2%, 50% 0%, 73% 2%, 87% 8%, 96% 18%, 100% 32%, 100% 100%, 0% 100%); background: #F5F0E8;"
+          >
+            <svg class="w-full h-full" viewBox="0 0 176 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="176" height="240" fill="#F5F0E8"/>
+              <ellipse cx="88" cy="120" rx="70" ry="90" fill="#EDE8F5" opacity="0.4"/>
+              <circle cx="88" cy="115" r="28" fill="none" stroke="#C9A96E" stroke-width="0.8" opacity="0.35"/>
+              <circle cx="88" cy="115" r="18" fill="none" stroke="#9B87C0" stroke-width="0.6" opacity="0.3"/>
+              <circle cx="88" cy="115" r="6" fill="#C9A96E" opacity="0.2"/>
+              <ellipse cx="88" cy="85" rx="8" ry="14" fill="#C9A96E" opacity="0.15" transform="rotate(0 88 115)"/>
+              <ellipse cx="88" cy="85" rx="8" ry="14" fill="#C9A96E" opacity="0.15" transform="rotate(45 88 115)"/>
+              <ellipse cx="88" cy="85" rx="8" ry="14" fill="#C9A96E" opacity="0.15" transform="rotate(90 88 115)"/>
+              <ellipse cx="88" cy="85" rx="8" ry="14" fill="#C9A96E" opacity="0.15" transform="rotate(135 88 115)"/>
+              <ellipse cx="88" cy="85" rx="8" ry="14" fill="#F0E6CC" opacity="0.15" transform="rotate(22 88 115)"/>
+              <ellipse cx="88" cy="85" rx="8" ry="14" fill="#F0E6CC" opacity="0.15" transform="rotate(67 88 115)"/>
+              <ellipse cx="88" cy="85" rx="8" ry="14" fill="#F0E6CC" opacity="0.15" transform="rotate(112 88 115)"/>
+              <ellipse cx="88" cy="85" rx="8" ry="14" fill="#F0E6CC" opacity="0.15" transform="rotate(157 88 115)"/>
+              <text x="88" y="185" text-anchor="middle" font-size="9" fill="#C9A96E" opacity="0.35" font-family="serif">GROOM PHOTO</text>
+            </svg>
+            <!--
+              PLACEHOLDER: Replace SVG with actual groom photo:
+              <img src="/images/groom.webp" alt="GROOM_NAME" width="176" height="240"
+                   class="w-full h-full object-cover object-top" loading="lazy" decoding="async"/>
+            -->
+          </div>
+          <svg
+            class="absolute inset-0 w-full h-full pointer-events-none"
+            viewBox="0 0 176 240"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M2 90 C2 50 24 20 50 8 Q88 -4 138 8 C162 20 174 50 174 90 L174 238 L2 238 Z"
+              stroke="#C9A96E"
+              stroke-width="1"
+              fill="none"
+              opacity="0.4"
+            />
+          </svg>
+        </div>
+
+        <!-- Groom info -->
+        <p class="text-[0.62rem] uppercase tracking-[0.3em] text-charcoal-muted font-body mb-1">
+          The Groom
+        </p>
+        <h3 class="font-display text-charcoal mb-1" style="font-size: clamp(1.4rem, 5vw, 1.8rem);">
+          <!-- PLACEHOLDER: Replace with actual groom name -->
+          Sk Abdul Wasim
+        </h3>
+        <!-- Optional Arabic name placeholder -->
+        <p class="font-arabic text-charcoal-muted mb-3" dir="rtl" lang="ar" style="font-size: 1rem; opacity: 0.55;">
+          <!-- PLACEHOLDER: Arabic groom name -->
+          اسم العريس
+        </p>
+        <p class="text-[0.65rem] uppercase tracking-[0.2em] text-charcoal-light mb-4 font-body">
+          <!-- PLACEHOLDER: Replace with actual parents' names -->
+          Son of GROOM_FATHER &amp; GROOM_MOTHER
+        </p>
+
+        <!-- Gold ornamental divider -->
+        <div class="flex items-center justify-center gap-2 mb-4" aria-hidden="true">
+          <span class="block h-px bg-gold/35" style="width: 2.5rem;"></span>
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="3" fill="#C9A96E" opacity="0.6"/></svg>
+          <span class="block h-px bg-gold/35" style="width: 2.5rem;"></span>
+        </div>
+
+        <p class="text-charcoal-muted leading-relaxed" style="font-size: clamp(0.78rem, 2.5vw, 0.875rem);">
+          <!-- PLACEHOLDER: Replace with groom description -->
+          A brief, heartfelt introduction to the groom — his character, his warmth, and what makes him remarkable.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>

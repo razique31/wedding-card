@@ -1,0 +1,66 @@
+---
+/**
+ * index.astro — Main page composition
+ *
+ * Experience flow:
+ *   1. Hero (Cinematic) — FULL-SCREEN VIDEO + TEXT LAYER. Pinned for scrubbing.
+ *   2. Countdown → Couple → Nikah → Walima → Gallery → Venue → RSVP → Closing
+ */
+
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/invitation/Hero.astro';
+import Countdown from '../components/invitation/Countdown.astro';
+import Couple from '../components/invitation/Couple.astro';
+import Nikah from '../components/invitation/Nikah.astro';
+import Walima from '../components/invitation/Walima.astro';
+import Gallery from '../components/invitation/Gallery.astro';
+import Venue from '../components/invitation/Venue.astro';
+import RSVP from '../components/invitation/RSVP.astro';
+import ClosingDua from '../components/invitation/ClosingDua.astro';
+import Footer from '../components/invitation/Footer.astro';
+---
+
+<Layout>
+  <!-- Main Invitation -->
+  <main id="invitation">
+    <!-- 1. Hero — The Cinematic Full-Screen Video Background with Overlaid Text -->
+    <Hero />
+
+    <!-- 2. Countdown — days until the celebration -->
+    <Countdown />
+
+    <!-- 3. Couple — editorial portrait section -->
+    <Couple />
+
+    <!-- 4. Nikah — the sacred ceremony -->
+    <Nikah />
+
+    <!-- 5. Walima — the reception celebration -->
+    <Walima />
+
+    <!-- 6. Gallery — editorial photo album -->
+    <Gallery />
+
+    <!-- 7. Venue — where to find us -->
+    <Venue />
+
+    <!-- 8. RSVP — kindly respond -->
+    <RSVP />
+
+    <!-- 9. Closing Dua — blessing and farewell -->
+    <ClosingDua />
+  </main>
+
+  <!-- Footer with replay option -->
+  <Footer />
+
+  <!-- JS-disabled fallback: ensure content is visible -->
+  <noscript>
+    <style>
+      [data-reveal] { visibility: visible !important; }
+      [data-draw] { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; }
+      #tap-overlay { display: none !important; }
+      body { overflow: auto !important; }
+    </style>
+  </noscript>
+</Layout>

@@ -1,0 +1,234 @@
+---
+/**
+ * Walima.astro — The Walima reception section
+ *
+ * Art direction: ivory with soft lavender floral SVG pattern overlay,
+ * organic floral vine arch SVG in lavender/gold, celebratory garden feel.
+ * Scattered petals, golden radial glow centered on section.
+ */
+---
+
+<section
+  id="walima"
+  class="relative section-padding text-center overflow-hidden"
+  aria-label="Walima reception details"
+  style="background-color: #FAF7F0;"
+>
+
+  <!-- ── Subtle golden radial glow ── -->
+  <div
+    class="absolute inset-0 pointer-events-none"
+    aria-hidden="true"
+    style="background: radial-gradient(ellipse 70% 60% at 50% 45%, rgba(201,169,110,0.07) 0%, transparent 70%);"
+  ></div>
+
+  <!-- ── Lavender floral SVG pattern overlay ── -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true" data-parallax="0.05">
+    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <pattern id="walima-floral" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+          <!-- Tiny 4-petal flower -->
+          <ellipse cx="30" cy="22" rx="3" ry="6" fill="#9B87C0" opacity="0.12"/>
+          <ellipse cx="30" cy="22" rx="3" ry="6" fill="#9B87C0" opacity="0.12" transform="rotate(90 30 30)"/>
+          <ellipse cx="30" cy="22" rx="3" ry="6" fill="#9B87C0" opacity="0.12" transform="rotate(45 30 30)"/>
+          <ellipse cx="30" cy="22" rx="3" ry="6" fill="#9B87C0" opacity="0.12" transform="rotate(135 30 30)"/>
+          <circle cx="30" cy="30" r="2" fill="#C9A96E" opacity="0.1"/>
+          <!-- Stem -->
+          <line x1="30" y1="36" x2="30" y2="45" stroke="#9B87C0" stroke-width="0.4" opacity="0.1"/>
+          <!-- Small leaf -->
+          <ellipse cx="26" cy="41" rx="2.5" ry="1.5" fill="#9B87C0" opacity="0.08" transform="rotate(-30 26 41)"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#walima-floral)"/>
+    </svg>
+  </div>
+
+  <!-- ── Scattered lavender petals (5 petals) ── -->
+  <!-- Petal 1 -->
+  <div class="petal absolute pointer-events-none" aria-hidden="true" style="top: 7%; left: 4%; opacity: 0.5; animation-delay: 1s;">
+    <svg width="22" height="30" viewBox="0 0 22 30" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(-35deg);">
+      <path d="M11 1 C17 4 21 12 21 18 C21 24 17 29 11 29 C5 29 1 24 1 18 C1 12 5 4 11 1 Z" fill="#9B87C0" opacity="0.55"/>
+    </svg>
+  </div>
+  <!-- Petal 2 -->
+  <div class="petal absolute pointer-events-none" aria-hidden="true" style="top: 18%; right: 6%; opacity: 0.45; animation-delay: 4s;">
+    <svg width="18" height="26" viewBox="0 0 18 26" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(25deg);">
+      <path d="M9 1 C14 4 17 11 17 16 C17 21 14 25 9 25 C4 25 1 21 1 16 C1 11 4 4 9 1 Z" fill="#C8B8E8" opacity="0.6"/>
+    </svg>
+  </div>
+  <!-- Petal 3 -->
+  <div class="petal absolute pointer-events-none" aria-hidden="true" style="top: 55%; left: 8%; opacity: 0.4; animation-delay: 7s;">
+    <svg width="20" height="28" viewBox="0 0 20 28" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(60deg);">
+      <path d="M10 1 C15 4 19 11 19 17 C19 23 15 27 10 27 C5 27 1 23 1 17 C1 11 5 4 10 1 Z" fill="#9B87C0" opacity="0.5"/>
+    </svg>
+  </div>
+  <!-- Petal 4 -->
+  <div class="petal absolute pointer-events-none" aria-hidden="true" style="bottom: 20%; right: 5%; opacity: 0.38; animation-delay: 2s;">
+    <svg width="24" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(-15deg);">
+      <path d="M12 1 C18 1 23 5 23 8 C23 11 18 15 12 15 C6 15 1 11 1 8 C1 5 6 1 12 1 Z" fill="#C8B8E8" opacity="0.55"/>
+    </svg>
+  </div>
+  <!-- Petal 5 -->
+  <div class="petal absolute pointer-events-none" aria-hidden="true" style="bottom: 10%; left: 12%; opacity: 0.35; animation-delay: 9s;">
+    <svg width="16" height="22" viewBox="0 0 16 22" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(80deg);">
+      <path d="M8 1 C12 4 15 10 15 14 C15 18 12 21 8 21 C4 21 1 18 1 14 C1 10 4 4 8 1 Z" fill="#9B87C0" opacity="0.45"/>
+    </svg>
+  </div>
+
+  <!-- ── Floral vine arch SVG (organic, not architectural) ── -->
+  <div
+    class="absolute inset-0 flex items-start justify-center pointer-events-none pt-6"
+    aria-hidden="true"
+    data-parallax="0.04"
+  >
+    <svg
+      viewBox="0 0 380 420"
+      class="w-full h-auto"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <!-- Left vine arm -->
+      <path
+        d="M30 420 C30 360 20 300 40 250 C55 215 80 190 110 170 C130 157 155 148 190 140"
+        stroke="#C9A96E"
+        stroke-width="1.2"
+        fill="none"
+        opacity="0.3"
+      />
+      <!-- Right vine arm (mirror) -->
+      <path
+        d="M350 420 C350 360 360 300 340 250 C325 215 300 190 270 170 C250 157 225 148 190 140"
+        stroke="#C9A96E"
+        stroke-width="1.2"
+        fill="none"
+        opacity="0.3"
+      />
+      <!-- Left lavender petals along vine -->
+      <ellipse cx="60" cy="340" rx="7" ry="11" fill="#9B87C0" opacity="0.25" transform="rotate(-40 60 340)"/>
+      <ellipse cx="50" cy="300" rx="6" ry="9" fill="#C8B8E8" opacity="0.22" transform="rotate(-50 50 300)"/>
+      <ellipse cx="75" cy="250" rx="7" ry="10" fill="#9B87C0" opacity="0.2" transform="rotate(-60 75 250)"/>
+      <ellipse cx="100" cy="210" rx="6" ry="9" fill="#C8B8E8" opacity="0.2" transform="rotate(-70 100 210)"/>
+      <ellipse cx="130" cy="180" rx="7" ry="10" fill="#9B87C0" opacity="0.22" transform="rotate(20 130 180)"/>
+      <!-- Right lavender petals along vine -->
+      <ellipse cx="320" cy="340" rx="7" ry="11" fill="#9B87C0" opacity="0.25" transform="rotate(40 320 340)"/>
+      <ellipse cx="330" cy="300" rx="6" ry="9" fill="#C8B8E8" opacity="0.22" transform="rotate(50 330 300)"/>
+      <ellipse cx="305" cy="250" rx="7" ry="10" fill="#9B87C0" opacity="0.2" transform="rotate(60 305 250)"/>
+      <ellipse cx="280" cy="210" rx="6" ry="9" fill="#C8B8E8" opacity="0.2" transform="rotate(70 280 210)"/>
+      <ellipse cx="250" cy="180" rx="7" ry="10" fill="#9B87C0" opacity="0.22" transform="rotate(-20 250 180)"/>
+      <!-- Gold stem accent circles at vine nodes -->
+      <circle cx="60" cy="340" r="2" fill="#C9A96E" opacity="0.2"/>
+      <circle cx="75" cy="250" r="2" fill="#C9A96E" opacity="0.18"/>
+      <circle cx="305" cy="250" r="2" fill="#C9A96E" opacity="0.18"/>
+      <circle cx="320" cy="340" r="2" fill="#C9A96E" opacity="0.2"/>
+      <!-- Crown at top of arch -->
+      <circle cx="190" cy="138" r="5" fill="none" stroke="#C9A96E" stroke-width="0.8" opacity="0.35"/>
+      <ellipse cx="190" cy="127" rx="5" ry="8" fill="#9B87C0" opacity="0.3"/>
+      <ellipse cx="180" cy="132" rx="4" ry="7" fill="#C8B8E8" opacity="0.25" transform="rotate(-30 180 132)"/>
+      <ellipse cx="200" cy="132" rx="4" ry="7" fill="#C8B8E8" opacity="0.25" transform="rotate(30 200 132)"/>
+    </svg>
+  </div>
+
+  <!-- ── Content ── -->
+  <div class="relative z-10 w-full">
+
+    <!-- Heading: Walima -->
+    <h2
+      class="font-display text-charcoal mb-2"
+      style="font-size: clamp(2.2rem, 8vw, 3.5rem);"
+      data-reveal
+    >
+      Walima
+    </h2>
+
+    <!-- Sub-heading in small caps -->
+    <p
+      class="font-body uppercase tracking-[0.4em] text-charcoal-muted mb-3"
+      style="font-size: clamp(0.6rem, 2vw, 0.72rem);"
+      data-reveal
+    >
+      The Wedding Reception
+    </p>
+
+    <!-- Gold ornamental divider -->
+    <div class="mb-10 flex items-center justify-center gap-3" aria-hidden="true" data-reveal>
+      <span class="block h-px bg-gold/40" style="width: clamp(2rem, 8vw, 4rem);"></span>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 2 L11.2 8.8 L18 10 L11.2 11.2 L10 18 L8.8 11.2 L2 10 L8.8 8.8 Z" fill="#C9A96E" opacity="0.75"/>
+      </svg>
+      <span class="block h-px bg-gold/40" style="width: clamp(2rem, 8vw, 4rem);"></span>
+    </div>
+
+    <!-- Event details -->
+    <div class="ornament-border bg-parchment/60 p-8 rounded-sm mb-8" data-reveal>
+      <!-- Date -->
+      <div class="mb-5">
+        <p class="text-[0.58rem] uppercase tracking-[0.35em] font-body text-charcoal-muted mb-1">Date</p>
+        <p class="font-display text-gold" style="font-size: clamp(1rem, 3.5vw, 1.3rem);">
+          27 December 2026
+        </p>
+      </div>
+
+      <div class="block h-px mx-8 mb-5 bg-gold/15" aria-hidden="true"></div>
+
+      <!-- Time -->
+      <div class="mb-5">
+        <p class="text-[0.58rem] uppercase tracking-[0.35em] font-body text-charcoal-muted mb-1">Time</p>
+        <p class="font-display text-charcoal" style="font-size: clamp(1rem, 3.5vw, 1.3rem);">
+          <!-- PLACEHOLDER: WALIMA TIME -->
+          WALIMA_TIME_PLACEHOLDER
+        </p>
+      </div>
+
+      <div class="block h-px mx-8 mb-5 bg-gold/15" aria-hidden="true"></div>
+
+      <!-- Venue -->
+      <div class="mb-4">
+        <p class="text-[0.58rem] uppercase tracking-[0.35em] font-body text-charcoal-muted mb-1">Venue</p>
+        <p class="font-display text-charcoal" style="font-size: clamp(1rem, 3.5vw, 1.3rem);">
+          <!-- PLACEHOLDER: WALIMA VENUE -->
+          WALIMA_VENUE_NAME
+        </p>
+      </div>
+
+      <!-- Address -->
+      <p class="font-body text-charcoal-muted leading-relaxed" style="font-size: clamp(0.75rem, 2.5vw, 0.85rem);">
+        <!-- PLACEHOLDER: WALIMA VENUE ADDRESS -->
+        WALIMA_VENUE_ADDRESS_LINE_1<br/>
+        WALIMA_VENUE_ADDRESS_LINE_2
+      </p>
+    </div>
+
+    <!-- Action buttons -->
+    <div class="flex flex-col gap-3 sm:flex-row sm:justify-center" data-reveal>
+      <!-- Add to Calendar -->
+      <a
+        href="#"
+        class="inline-flex items-center justify-center gap-2 px-6 py-3 border border-gold/40 text-gold font-body text-[0.65rem] uppercase tracking-[0.25em] transition-colors duration-300"
+        aria-label="Add Walima reception to your calendar"
+      >
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <rect x="1" y="2" width="12" height="11" rx="1" stroke="currentColor" stroke-width="1"/>
+          <line x1="4" y1="1" x2="4" y2="4" stroke="currentColor" stroke-width="1"/>
+          <line x1="10" y1="1" x2="10" y2="4" stroke="currentColor" stroke-width="1"/>
+          <line x1="1" y1="6" x2="13" y2="6" stroke="currentColor" stroke-width="1"/>
+        </svg>
+        Add to Calendar
+      </a>
+      <!-- Get Directions -->
+      <a
+        href="https://maps.google.com/?q=WALIMA_VENUE_ADDRESS"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-2 px-6 py-3 border border-gold/40 text-gold font-body text-[0.65rem] uppercase tracking-[0.25em] transition-colors duration-300"
+        aria-label="Get directions to the Walima venue"
+      >
+        <svg width="12" height="14" viewBox="0 0 12 14" fill="none" aria-hidden="true">
+          <path d="M6 1 C3.24 1 1 3.24 1 6 C1 9.75 6 13 6 13 C6 13 11 9.75 11 6 C11 3.24 8.76 1 6 1 Z" stroke="currentColor" stroke-width="1" fill="none"/>
+          <circle cx="6" cy="6" r="1.5" fill="currentColor"/>
+        </svg>
+        Get Directions
+      </a>
+    </div>
+
+  </div>
+</section>
