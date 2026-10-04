@@ -55,56 +55,74 @@ export function initHeroCinematic(): void {
   function stopAutoPlay() {
     if (!isAutoPlaying) return;
     isAutoPlaying = false;
-    video?.pause();
     clearTimeout(autoPlayTimeout);
   }
 
-  // Handle Tap to Open
+  // Handle Tap to Open (Guaranteed instant response and iOS video playback)
+  let opened = false;
   function handleOpen() {
-    if (!tapOverlay) return;
+    if (!tapOverlay || opened) return;
+    opened = true;
+
+    // Immediately trigger video play synchronously inside user gesture for iOS/Safari policy
+    if (video) {
+      isAutoPlaying = true;
+      video.muted = true; // Required by autoplay policies
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((err) => {
+          console.warn('Native video autoplay policy blocked:', err);
+          isAutoPlaying = false;
+        });
+      }
+    }
 
     // Unlock scroll
     const lenis = getLenis();
     lenis?.start();
 
-    // Fade out overlay
+    // Fade out overlay cleanly
     gsap.to(tapOverlay, {
       autoAlpha: 0,
-      duration: 0.8,
+      duration: 0.6,
       ease: 'power2.out',
       onComplete: () => {
         tapOverlay.style.display = 'none';
       }
     });
 
-    // Force browser layout update then start native autoplay
-    setTimeout(() => {
-      ScrollTrigger.refresh();
+    // Sync scroll and video playback smoothly
+    ScrollTrigger.refresh();
+    
+    if (lenis && scrollContainer && video) {
+      const duration = (video.duration && !isNaN(video.duration) && video.duration > 0) ? video.duration : 5;
+      const targetScroll = scrollContainer.getBoundingClientRect().top + window.scrollY + scrollContainer.offsetHeight - window.innerHeight;
       
-      if (lenis && scrollContainer && video) {
-        // Play video natively for true 60fps hardware acceleration!
-        isAutoPlaying = true;
-        video.play().catch(() => { isAutoPlaying = false; });
-        
-        // Scroll the page at the exact same speed so the text animations sync perfectly
-        const targetScroll = scrollContainer.getBoundingClientRect().top + window.scrollY + scrollContainer.offsetHeight - window.innerHeight;
-        
-        lenis.scrollTo(targetScroll, {
-          duration: video.duration > 0 ? video.duration : 5,
-          easing: (t: number) => t
-        });
+      lenis.scrollTo(targetScroll, {
+        duration: duration,
+        easing: (t: number) => t
+      });
 
-        // Re-enable manual scroll control when finished
-        autoPlayTimeout = window.setTimeout(stopAutoPlay, (video.duration > 0 ? video.duration : 5) * 1000);
-        
-        // If user manually interrupts the scroll (touches screen), stop autoplay and hand control back to them immediately
-        window.addEventListener('wheel', stopAutoPlay, { once: true });
-        window.addEventListener('touchstart', stopAutoPlay, { once: true });
-      }
-    }, 50);
+      // Stop autoplay once video ends or duration elapses
+      video.addEventListener('ended', stopAutoPlay, { once: true });
+      autoPlayTimeout = window.setTimeout(stopAutoPlay, duration * 1000);
+      
+      // If user touches or wheels during autoplay, instantly grant them manual control
+      const interruptHandler = () => {
+        stopAutoPlay();
+        window.removeEventListener('wheel', interruptHandler);
+        window.removeEventListener('touchstart', interruptHandler);
+      };
+      window.addEventListener('wheel', interruptHandler, { passive: true, once: true });
+      window.addEventListener('touchstart', interruptHandler, { passive: true, once: true });
+    }
   }
 
   tapBtn?.addEventListener('click', handleOpen);
+  tapBtn?.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    handleOpen();
+  }, { passive: false });
   tapBtn?.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
@@ -139,7 +157,11 @@ export function initHeroCinematic(): void {
     lastTime = targetTime;
     isSeeking = true;
     try {
-      video!.currentTime = targetTime;
+      if ('fastSeek' in video!) {
+        (video as any).fastSeek(targetTime);
+      } else {
+        video!.currentTime = targetTime;
+      }
     } catch {
       isSeeking = false;
     }
@@ -193,9 +215,9 @@ export function initHeroCinematic(): void {
 
       if (textTop && textBottom) {
         textTop.style.opacity = textOpacity.toString();
-        textTop.style.transform = `translateY(${textY}px)`;
+        textTop.style.transform = `translate3d(0, ${textY}px, 0)`;
         textBottom.style.opacity = textOpacity.toString();
-        textBottom.style.transform = `translateY(${textY}px)`;
+        textBottom.style.transform = `translate3d(0, ${textY}px, 0)`;
       }
     }
   });

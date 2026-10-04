@@ -28,7 +28,7 @@ export function initScrollReveals(): void {
         scrollTrigger: {
           trigger: el,
           start: 'top 88%',
-          toggleActions: 'play none none none',
+          once: true, // Auto-kill trigger once animated — frees CPU resources
         },
       }
     );
@@ -39,7 +39,6 @@ export function initScrollReveals(): void {
 
   drawEls.forEach((el) => {
     // Simply create ScrollTrigger for all draw elements
-
     ScrollTrigger.create({
       trigger: el,
       start: 'top 80%',
@@ -63,11 +62,12 @@ export function initScrollReveals(): void {
       {
         y: yRange,
         ease: 'none',
+        force3D: true,
         scrollTrigger: {
           trigger: el,
           start: 'top bottom',
           end: 'bottom top',
-          scrub: true,
+          scrub: 1, // 1s smooth catch-up prevents micro-stutter
         },
       }
     );

@@ -22,6 +22,7 @@ const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').mat
 
 let lenis: Lenis | null = null;
 let ctx: gsap.Context | null = null;
+let tickerUpdate: ((time: number) => void) | null = null;
 let initialized = false;
 
 /**
@@ -48,12 +49,12 @@ export function initMotion(): void {
         // Sync Lenis scroll with GSAP ScrollTrigger
         lenis.on('scroll', ScrollTrigger.update);
 
-        // Drive Lenis natively for maximum smoothness
-        function raf(time: number) {
-          lenis!.raf(time);
-          requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
+        // Synchronize Lenis with GSAP's internal ticker for true zero-stutter frame alignment
+        tickerUpdate = (time: number) => {
+          lenis?.raf(time * 1000);
+        };
+        gsap.ticker.add(tickerUpdate);
+        gsap.ticker.lagSmoothing(0);
       } catch (lenisErr) {
         console.warn('Lenis init failed, using native scroll:', lenisErr);
         lenis = null;
@@ -95,6 +96,10 @@ export function cleanup(): void {
   ctx?.revert();
   ctx = null;
   ScrollTrigger.getAll().forEach(t => t.kill());
+  if (tickerUpdate) {
+    gsap.ticker.remove(tickerUpdate);
+    tickerUpdate = null;
+  }
   if (lenis) { lenis.destroy(); lenis = null; }
   document.documentElement.classList.remove('has-motion');
   initialized = false;

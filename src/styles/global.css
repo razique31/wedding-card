@@ -1,6 +1,26 @@
 @import "tailwindcss";
 
 /* ============================================
+   LOCAL FONTS
+   ============================================ */
+
+@font-face {
+  font-family: 'Yulltan-Regular';
+  src: url('/Yulltan-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Yulltan';
+  src: url('/Yulltan-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================
    DESIGN TOKENS — Tailwind v4 @theme
    ============================================ */
 
@@ -35,7 +55,8 @@
   /* — Typography — */
   --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
   --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --font-arabic: 'Noto Naskh Arabic', 'Traditional Arabic', serif;
+  --font-arabic: 'Yulltan-Regular', 'Yulltan', 'Noto Naskh Arabic', 'Traditional Arabic', serif;
+  --font-yulltan: 'Yulltan-Regular', 'Yulltan', 'Noto Naskh Arabic', serif;
 
   /* — Spacing — */
   --spacing-section: clamp(5rem, 12vw, 9rem);

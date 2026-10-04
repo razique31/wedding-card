@@ -208,7 +208,7 @@
     var sEl = document.getElementById('cd-secs');
     var done = document.getElementById('countdown-complete');
 
-    function pad(n) { return n < 10 ? '0' + n : String(n); }
+    function pad(n: number) { return n < 10 ? '0' + n : String(n); }
 
     function update() {
       var diff = WEDDING - Date.now();

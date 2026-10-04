@@ -81,6 +81,23 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://example.
     />
   </noscript>
 
+  <!-- Local Arabic / Islamic Display Font -->
+  <link
+    rel="preload"
+    href="/Yulltan-Regular.ttf"
+    as="font"
+    type="font/ttf"
+    crossorigin
+  />
+
+  <!-- Preload Invitation Video for Instant Smooth Playback -->
+  <link
+    rel="preload"
+    href="/video/invitation.mp4"
+    as="video"
+    type="video/mp4"
+  />
+
   <!-- Global Styles -->
   <style>
     @import '../styles/global.css';
