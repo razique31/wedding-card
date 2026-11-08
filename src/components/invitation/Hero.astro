@@ -22,7 +22,7 @@
     <div class="absolute inset-0 w-full h-full z-0 transform-gpu">
       <video
         id="hero-video"
-        src="/video/invitation.mp4"
+        src="/video/invitation.webm"
         poster="/video/poster.svg"
         class="w-full h-full object-cover object-center block"
         muted
@@ -38,6 +38,32 @@
       class="absolute inset-0 z-10 bg-gradient-to-t from-[#1A1128]/70 via-[#1A1128]/20 to-[#1A1128]/40 pointer-events-none"
       aria-hidden="true"
     >
+    </div>
+
+    <!-- 2.5 DASTAAN INTERLUDE (z-20) -->
+    <div
+      id="hero-dastaan"
+      class="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none px-6 text-center opacity-0 translate-y-3"
+      style="will-change: transform, opacity;"
+    >
+      <div class="flex flex-col items-center justify-center drop-shadow-[0_4px_12px_rgba(0,0,0,0.85)]">
+        <h2
+          class="font-display italic text-[#C9A96E] leading-none mb-3"
+          style="font-size: clamp(2.4rem, 8vw, 4rem);"
+        >
+          Dastaan
+        </h2>
+        <div class="flex items-center justify-center gap-3 my-1">
+          <span class="block h-px bg-[#C9A96E]/60 w-8"></span>
+          <span class="text-[#C9A96E] text-[10px]">✦</span>
+          <span class="block h-px bg-[#C9A96E]/60 w-8"></span>
+        </div>
+        <p
+          class="font-body text-[#F5F0E8] text-xs sm:text-[9px] tracking-[0.3em] uppercase mt-2 font-medium"
+        >
+          Your decade-long love story
+        </p>
+      </div>
     </div>
 
     <!-- 3. TEXT / INVITATION CONTENT (z-20) -->

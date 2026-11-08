@@ -8,9 +8,9 @@ export default defineConfig({
     AstroPWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'The Wedding Of Bride & Groom',
+        name: 'The Wedding Of Farheen Naaz & Sk Abdul Wasim',
         short_name: 'Wedding',
-        description: 'A cinematic wedding invitation experience.',
+        description: 'Wedding Invitation',
         start_url: '/',
         theme_color: '#1A1128',
         background_color: '#1A1128',
