@@ -389,3 +389,20 @@ html:not(.has-motion) [data-draw] {
   border: 1px solid rgba(201, 169, 110, 0.3);
   box-shadow: inset 0 0 0 4px rgba(201, 169, 110, 0.08);
 }
+
+/* ============================================
+   PERFORMANCE: CONTENT VISIBILITY FOR OFFSCREEN SECTIONS
+   ============================================ */
+
+#countdown,
+#couple,
+#nikah,
+#walima,
+#gallery,
+#venue,
+#rsvp,
+#closing-dua,
+#footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}

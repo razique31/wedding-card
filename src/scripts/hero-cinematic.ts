@@ -9,7 +9,7 @@
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { initMotion, getLenis } from './motion-init';
+import { initMotion, getLenis, ensureScrollReveals } from './motion-init';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,14 +30,9 @@ export function initHeroCinematic(): void {
   if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
   }
-  window.scrollTo(0, 0);
-  document.documentElement.scrollTop = 0;
-  if (document.body) document.body.scrollTop = 0;
-  setTimeout(() => {
+  if (window.scrollY !== 0) {
     window.scrollTo(0, 0);
-    document.documentElement.scrollTop = 0;
-    if (document.body) document.body.scrollTop = 0;
-  }, 10);
+  }
 
   // Immediately pause and rewind video to frame 0
   video.pause();
@@ -72,7 +67,7 @@ export function initHeroCinematic(): void {
   if (bgMusic) {
     bgMusic.loop = true;
     bgMusic.pause();
-    try { bgMusic.currentTime = 0; } catch {}
+    try { bgMusic.currentTime = 0; } catch { }
   }
 
   if (musicToggle) {
@@ -211,8 +206,9 @@ export function initHeroCinematic(): void {
       }
     }
 
-    // Unlock scroll
+    // Unlock scroll & ensure all section reveals are activated
     lenis?.start();
+    ensureScrollReveals();
 
     // Fade out overlay cleanly
     gsap.to(tapOverlay, {
@@ -343,20 +339,7 @@ export function initHeroCinematic(): void {
     pinSpacing: false, // Prevents GSAP from generating a pin-spacer wrapper that causes layout shifts
     scrub: true, // Let ScrollTrigger handle the scrub directly
     onUpdate: (self) => {
-      if (!opened) {
-        // While unopened, keep video at 0 and all text hidden
-        if (video && video.currentTime !== 0) {
-          try { video.currentTime = 0; } catch { }
-        }
-        if (heroDastaan) {
-          heroDastaan.style.opacity = '0';
-        }
-        if (textTop && textBottom) {
-          textTop.style.opacity = '0';
-          textBottom.style.opacity = '0';
-        }
-        return;
-      }
+      if (!opened) return;
 
       seekVideo(self.progress);
 

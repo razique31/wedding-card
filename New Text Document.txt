@@ -1,0 +1,5 @@
+old
+class="font-display leading-none text-[#C9A96E]"
+
+new 
+class="font-display leading-none text-[#ebbe6c]"

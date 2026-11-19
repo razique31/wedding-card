@@ -24,6 +24,20 @@ let lenis: Lenis | null = null;
 let ctx: gsap.Context | null = null;
 let tickerUpdate: ((time: number) => void) | null = null;
 let initialized = false;
+let revealsInitialized = false;
+
+/**
+ * Initialize scroll reveals lazily when needed or during browser idle time.
+ * Prevents forced reflow and heavy layout calculation during initial page load.
+ */
+export function ensureScrollReveals(): void {
+  if (revealsInitialized || REDUCED_MOTION || !ctx) return;
+  revealsInitialized = true;
+  ctx.add(() => {
+    initScrollReveals();
+    ScrollTrigger.refresh();
+  });
+}
 
 /**
  * Initialize the complete motion system.
@@ -63,9 +77,7 @@ export function initMotion(): void {
 
     // GSAP context for scoped cleanup
     ctx = gsap.context(() => {
-      if (!REDUCED_MOTION) {
-        initScrollReveals();
-      } else {
+      if (REDUCED_MOTION) {
         // Reduced motion: reveal everything immediately
         document.querySelectorAll<HTMLElement>('[data-reveal]').forEach(el => {
           el.style.visibility = 'visible';
@@ -78,6 +90,15 @@ export function initMotion(): void {
         });
       }
     });
+
+    // Defer reveals until browser is idle so initial load is instant and unblocked
+    if (!REDUCED_MOTION) {
+      if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(() => ensureScrollReveals(), { timeout: 2500 });
+      } else {
+        setTimeout(() => ensureScrollReveals(), 1500);
+      }
+    }
 
     // Refresh after all assets loaded
     window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
@@ -95,6 +116,7 @@ export function initMotion(): void {
 export function cleanup(): void {
   ctx?.revert();
   ctx = null;
+  revealsInitialized = false;
   ScrollTrigger.getAll().forEach(t => t.kill());
   if (tickerUpdate) {
     gsap.ticker.remove(tickerUpdate);
