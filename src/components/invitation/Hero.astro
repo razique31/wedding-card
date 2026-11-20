@@ -22,13 +22,13 @@
     <div class="absolute inset-0 w-full h-full z-0 transform-gpu">
       <video
         id="hero-video"
-        src="/video/invitation.webm"
+        data-src="/video/invitation.webm"
         poster="/video/poster.webp"
         class="w-full h-full object-cover object-center block"
         muted
         playsinline
         webkit-playsinline
-        preload="metadata"
+        preload="none"
         aria-hidden="true"
         tabindex="-1"></video>
     </div>
@@ -374,10 +374,75 @@
         Tap Seal to Open
       </p>
     </div>
+
+    <!-- 5. BOUNCING SCROLL DOWN INDICATOR (z-25) -->
+    <!-- Appears gracefully after the video finishes playing to prompt scrolling -->
+    <div
+      id="hero-scroll-cue"
+      class="absolute bottom-6 inset-x-0 z-25 flex flex-col items-center justify-center opacity-0 pointer-events-none translate-y-2 transition-all duration-700 select-none cursor-pointer pb-[env(safe-area-inset-bottom,0px)]"
+      aria-label="Scroll down to explore invitation"
+    >
+      <p
+        class="text-[#ebbe6c] text-[0.6rem] uppercase tracking-[0.35em] font-body font-semibold drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] mb-1"
+      >
+        Scroll Down
+      </p>
+      <div
+        class="scroll-bounce-anim flex flex-col items-center text-[#ebbe6c] drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"
+      >
+        <svg
+          class="w-3.5 h-3.5 -mb-1 opacity-60 text-[#ebbe6c]"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+        <svg
+          class="w-4 h-4 text-[#ebbe6c]"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </div>
+    </div>
+
+    <style>
+      .scroll-bounce-anim {
+        animation: scrollDownBounce 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        will-change: transform, opacity;
+      }
+
+      @keyframes scrollDownBounce {
+        0%, 100% {
+          transform: translateY(0);
+          opacity: 0.65;
+        }
+        50% {
+          transform: translateY(7px);
+          opacity: 1;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .scroll-bounce-anim {
+          animation: none;
+          opacity: 0.8;
+        }
+      }
+    </style>
   </section>
 </div>
 
 <script>
-  import { initHeroCinematic } from "../../scripts/hero-cinematic";
-  initHeroCinematic();
+  import { initHeroLauncher } from "../../scripts/hero-launcher";
+  initHeroLauncher();
 </script>

@@ -100,8 +100,12 @@ export function initMotion(): void {
       }
     }
 
-    // Refresh after all assets loaded
-    window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
+    // Refresh after all assets loaded only if reveals are active
+    window.addEventListener('load', () => {
+      if (revealsInitialized) {
+        ScrollTrigger.refresh();
+      }
+    }, { once: true });
 
   } catch (error) {
     console.error('Motion system failed:', error);

@@ -74,6 +74,44 @@ html {
   overflow-x: hidden;
 }
 
+/* Scroll locked state — active until the user taps the wax seal */
+html.scroll-locked,
+body.scroll-locked {
+  overflow: hidden !important;
+  height: 100vh !important;
+  height: 100svh !important;
+  max-height: 100svh !important;
+  touch-action: none !important;
+  position: fixed !important;
+  width: 100% !important;
+  inset: 0 !important;
+}
+
+body.scroll-locked .card-composition {
+  height: 100svh !important;
+  max-height: 100svh !important;
+  overflow: hidden !important;
+}
+
+body.scroll-locked #hero-scroll-container {
+  height: 100svh !important;
+  max-height: 100svh !important;
+  overflow: hidden !important;
+}
+
+/* Hide all subsequent sections until the invitation is opened */
+body.scroll-locked #countdown,
+body.scroll-locked #couple,
+body.scroll-locked #nikah,
+body.scroll-locked #walima,
+body.scroll-locked #gallery,
+body.scroll-locked #venue,
+body.scroll-locked #rsvp,
+body.scroll-locked #closing,
+body.scroll-locked footer {
+  display: none !important;
+}
+
 /* Disable CSS smooth scroll when Lenis is active */
 html.has-motion, html.lenis.lenis-smooth {
   scroll-behavior: auto !important;
