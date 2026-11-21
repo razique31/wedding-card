@@ -6,6 +6,8 @@ export default defineConfig({
   output: 'static',
   integrations: [
     AstroPWA({
+      site: 'https://wedding-card-588.pages.dev',
+      output: 'static',
       registerType: 'autoUpdate',
       manifest: {
         name: 'The Wedding Of Farheen Naaz & Sk Abdul Wasim',
@@ -20,23 +22,23 @@ export default defineConfig({
           {
             src: '/pwa-192x192.webp',
             sizes: '192x192',
-            type: 'image/png'
+            type: 'image/webp'
           },
           {
             src: '/pwa-512x512.webp',
             sizes: '512x512',
-            type: 'image/png'
+            type: 'image/webp'
           },
           {
             src: '/pwa-maskable-512.webp',
             sizes: '512x512',
-            type: 'image/png',
+            type: 'image/webp',
             purpose: 'any maskable'
           }
         ]
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
+        globPatterns: ['**/*.{js,css,html,ico,png,jpg,jpeg,webp,svg,woff2}'],
         navigateFallbackDenylist: [/^\/video\//, /^\/music\//],
       }
     })
