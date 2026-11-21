@@ -45,10 +45,10 @@ export function ensureScrollReveals(): void {
  */
 export function initMotion(): void {
   if (initialized) return;
-  initialized = true;
 
   try {
     cleanup();
+    initialized = true;
     document.documentElement.classList.add('has-motion');
 
     if (!REDUCED_MOTION) {

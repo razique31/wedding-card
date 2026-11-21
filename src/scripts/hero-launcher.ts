@@ -1,12 +1,19 @@
 /**
  * hero-launcher.ts
  *
- * Ultra-lightweight initial launcher (~1KB).
- * Executes immediately on page load without importing GSAP, ScrollTrigger, or Lenis.
- * 1. Enforces strict scroll lock and zero scroll restoration before user interaction.
- * 2. Idle-prefetches the heavy cinematic module (GSAP + ScrollTrigger + Lenis) during idle time.
- * 3. Pre-warms video on hover/touchstart.
- * 4. On seal tap/click, dynamically loads and executes the full cinematic experience.
+ * Lightweight initial launcher (~1KB gzipped).
+ * Runs immediately on page load without importing GSAP, ScrollTrigger, or Lenis.
+ *
+ * Responsibilities:
+ * 1. Enforce scroll lock and scroll restoration before user interaction.
+ * 2. Idle-prefetch the heavy cinematic module during idle time.
+ * 3. Pre-warm video on hover/touchstart.
+ * 4. On seal tap: start audio SYNCHRONOUSLY (within user activation),
+ *    set video source, then hand off to the cinematic module.
+ *
+ * CRITICAL: Audio playback MUST be initiated synchronously within the
+ * user-gesture handler, before any async boundary (dynamic import).
+ * Otherwise browsers reject it as not user-initiated.
  */
 
 let cinematicPromise: Promise<typeof import('./hero-cinematic')> | null = null;
@@ -48,7 +55,6 @@ export function initHeroLauncher(): void {
   }
 
   function unlockScroll() {
-    opened = true;
     document.documentElement.classList.remove('scroll-locked');
     document.body.classList.remove('scroll-locked');
     document.body.style.position = '';
@@ -91,12 +97,18 @@ export function initHeroLauncher(): void {
     setTimeout(prefetchCinematic, 1200);
   }
 
-  // Handle open
-  async function triggerOpen() {
+  // Handle open — called synchronously from user gesture
+  function triggerOpen() {
     if (opened) return;
+    opened = true;
+
+    // ── SYNCHRONOUS within user gesture ──
+    // These MUST happen before any async boundary to preserve user-activation.
+
+    // 1. Unlock scroll
     unlockScroll();
 
-    // Prepare video & audio sources
+    // 2. Set media sources synchronously
     if (video && !video.src && video.dataset.src) {
       video.src = video.dataset.src;
     }
@@ -104,8 +116,38 @@ export function initHeroLauncher(): void {
       bgMusic.src = bgMusic.dataset.src;
     }
 
-    const { startCinematicExperience } = await prefetchCinematic();
-    startCinematicExperience();
+    // 3. Start audio IMMEDIATELY — synchronously within user gesture.
+    //    This is critical: browsers require .play() to be called in the
+    //    same synchronous call stack as the user event. If we await the
+    //    dynamic import first, the activation token expires.
+    let audioStarted = false;
+    if (bgMusic) {
+      bgMusic.loop = true;
+      const playPromise = bgMusic.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => { audioStarted = true; })
+          .catch(() => { /* Will be retried by music toggle */ });
+      }
+    }
+
+    // 4. Start video playback synchronously within user gesture too.
+    //    The cinematic module will coordinate the actual animation.
+    let videoPlayStarted = false;
+    if (video) {
+      video.muted = true;
+      video.preload = 'auto';
+      const vp = video.play();
+      if (vp !== undefined) {
+        vp.then(() => { videoPlayStarted = true; })
+          .catch(() => { /* Will be handled by cinematic module */ });
+      }
+    }
+
+    // 5. NOW load the cinematic module (async is fine — media already started)
+    prefetchCinematic().then(({ startCinematicExperience }) => {
+      startCinematicExperience();
+    });
   }
 
   tapBtn?.addEventListener('click', triggerOpen);
