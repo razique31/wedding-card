@@ -3,11 +3,10 @@ import tailwindcss from '@tailwindcss/vite';
 import AstroPWA from '@vite-pwa/astro';
 
 export default defineConfig({
+  site: 'https://wedding-card-588.pages.dev',
   output: 'static',
   integrations: [
     AstroPWA({
-      site: 'https://wedding-card-588.pages.dev',
-      output: 'static',
       registerType: 'autoUpdate',
       manifest: {
         name: 'The Wedding Of Farheen Naaz & Sk Abdul Wasim',
